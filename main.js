@@ -277,7 +277,7 @@ if (pathname.endsWith(`/game.html`)) {
   gamePlay.innerHTML = `
   <a
   class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
-  href="https://cdn2.supereasygame.com/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
+  href="https://cdn.playbleads.com/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
   >Play</a
 >
   `;
