@@ -10,7 +10,7 @@ function toggleMenu() {
 menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
-const platform = `yole1`;
+const platform = `yolel`;
 const fullData = data.games;
 const categories = data.categories;
 
