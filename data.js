@@ -553,7 +553,7 @@ const data = {
       title: "Dash Cat",
       slug: "dash-cat",
       stars: "4.3",
-      played: "122.7k",
+      played: "449.7k",
     },
     {
       id: "233101",
@@ -583,7 +583,7 @@ const data = {
       title: "Super Soccer",
       slug: "super-soccer",
       stars: "4.3",
-      played: "122.1k",
+      played: "322.1k",
     },
   ],
   categories: [
