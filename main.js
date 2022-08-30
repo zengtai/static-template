@@ -74,7 +74,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     <li class="text-center">
       <a href="./game.html?appid=${game.name}">
         <img
-          class="inline-block object-cover h-16 rounded-lg"
+          class="inline-block rounded-lg"
           src="${game.icon}"
           alt="${game.title}"
           width="100"
@@ -84,11 +84,6 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
         ${game.title}
         </h2>
-        <div class="text-gray-400">
-          <span class="text-orange-400">${
-            (game.played && game.played) || 133.1
-          }</span> Play
-        </div>
       </a>
     </li>
     `
@@ -299,7 +294,7 @@ if (pathname.endsWith(`/game.html`)) {
     <li class="flex justify-between items-center">
       <a class="flex space-x-3" href="./game.html?appid=${item.name}">
         <img
-          class="object-cover h-16 w-16 rounded-lg"
+          class="w-16 rounded-lg"
           src="${item.icon}"
           alt="${item.title}"
           width="100"
