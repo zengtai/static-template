@@ -76,7 +76,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     <li class="text-center">
       <a href="./game.html?appid=${game.name}">
         <img
-          class="inline-block object-cover h-16 rounded-lg"
+          class="inline-block rounded-lg"
           src="${game.icon}"
           alt="${game.title}"
           width="100"
@@ -86,11 +86,6 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
         ${game.title}
         </h2>
-        <div class="text-gray-400">
-          <span class="text-orange-400">${
-            (game.played && game.played) || 133.1
-          }</span> Play
-        </div>
       </a>
     </li>
     `
@@ -99,32 +94,38 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
   //
   let top1games = fullData.filter((item) =>
-    [`BlockMaster`, `BoardTheTrain`].includes(item.name)
+    [`SuperSoccer`, `DashCat`].includes(item.name)
   );
   //
   top1.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
       <h2>Hot Games</h2>
     </header>
-    <ul class="grid grid-cols-2 gap-4 m-4">
+    <ul class="grid grid-cols-2 gap-2 m-4">
       ${top1games
         .reverse()
         .map(
           (item) => `
-      <li class="rounded-lg bg-violet-500 p-2 text-white">
+      <li class="rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30">
         <a href="./game.html?appid=${item.name}">
           <div class="flex space-x-1">
             <img
-              class="rounded-lg border-2 w-16 h-16 -mt-8 bg-white"
+              class="rounded-lg border-2 border-white w-16 h-16 -mt-8 bg-white"
               src="${item.icon}"
               alt="${item.title}"
               width="100"
               height="100"
-              loading="lazy"
             />
-            <div class="text-xs"><span class="text-orange-400 text-sm">${item.played}</span> Play</div>
+            <div class="text-xs drop-shadow"><span class="text-yellow-200 text-sm">${item.played}</span> Play</div>
           </div>
-          <h2 class="pt-2">${item.title}</h2>
+          <div class="flex justify-between items-center pt-2 drop-shadow">
+            <h2 class="font-bold">${item.title}</h2>
+            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clip-rule="evenodd" />
+          </svg>                         
+          </span>
+          </div>
+          
         </a>
       </li>`
         )
@@ -295,7 +296,7 @@ if (pathname.endsWith(`/game.html`)) {
     <li class="flex justify-between items-center">
       <a class="flex space-x-3" href="./game.html?appid=${item.name}">
         <img
-          class="object-cover h-16 w-16 rounded-lg"
+          class="w-16 rounded-lg"
           src="${item.icon}"
           alt="${item.title}"
           width="100"
