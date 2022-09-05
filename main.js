@@ -11,6 +11,8 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
 
+const domain = `https://cdn2.supereasygame.com`;
+const platform = `tgame1`;
 const fullData = data.games;
 const categories = data.categories;
 
@@ -277,7 +279,7 @@ if (pathname.endsWith(`/game.html`)) {
   gamePlay.innerHTML = `
   <a
   class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
-  href="https://cdn2.supereasygame.com/newgames/minigame.html?appid=${currentGame.name}&platform=tgame1"
+  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
   >Play</a
 >
   `;
