@@ -11,8 +11,8 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
 
-const domain = `https://cdn2.supereasygame.com`;
-const platform = `uptapgame`;
+const domain = `https://cdn.playfreegamer.com`;
+const platform = `uptapin2`;
 const fullData = data.games;
 const categories = data.categories;
 const ICON_FORMAT = `webp`;
@@ -280,7 +280,7 @@ if (pathname.endsWith(`/game.html`)) {
   gamePlay.innerHTML = `
   <a
   class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
-  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
+  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}&t=20220906"
   >Play</a
 >
   `;
