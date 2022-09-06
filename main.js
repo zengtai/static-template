@@ -1,3 +1,94 @@
+const group = [
+  "4096",
+  "8BallKing",
+  "AceMan",
+  "AirBrawl",
+  "AirHockey3D",
+  "AmazingRoad",
+  "AntRun",
+  "ArcheryKing",
+  "ArcheryMaster",
+  "AttackHero",
+  "BatterKing",
+  "BattleBurger",
+  "BestShooter",
+  "BigEater",
+  "BigSword",
+  "BilliardKing",
+  "BlockGun3D",
+  "BlockMaster",
+  "BlockMaze",
+  "BoardTheTrain",
+  "BombingTime",
+  "BoomingPlant",
+  "BounceShooter",
+  "BrainMaster",
+  "BraveArcher",
+  "BubblePop",
+  "BuilderRun",
+  "BulletMan",
+  "BulletMaster3D",
+  "CandyHit",
+  "CleverRescue",
+  "ColorBall3D",
+  "ColorBead",
+  "ColorCrash",
+  "ColorHammer",
+  "ColorRing",
+  "ColorSplash",
+  "CopyLaser",
+  "CountingMaster",
+  "CrackShot",
+  "CrashTower3D",
+  "CrazyDrift",
+  "CrazyHammer",
+  "CrazyRace",
+  "CutMaster",
+  "DashCat",
+  "DigEscape",
+  "EasyCharger",
+  "FierceCity",
+  "FillTheGlass",
+  "FruitMonster",
+  "FuryEdge",
+  "GlidingCharger",
+  "GoldenBoot",
+  "GoldenGlove",
+  "Hurricane",
+  "IronAttack",
+  "JumpSmash",
+  "LetMeIn",
+  "LittleFarm",
+  "LittleMiner",
+  "LostInLust",
+  "MagicDraw",
+  "MagicPaint",
+  "MergeGuns3D",
+  "MergeKill",
+  "MrRacer",
+  "MyTerritory",
+  "NastyBomb",
+  "PowerShooter",
+  "RollingAgent",
+  "RollingBall",
+  "RoofRunner",
+  "RushAndFire",
+  "SausageRun",
+  "SharkisComing",
+  "ShootingStar",
+  "SnakeHit",
+  "SoccerHero",
+  "SpinTheMaze",
+  "SuperArcher",
+  "SuperCoaster",
+  "SuperSoccer",
+  "TinyWar",
+  "TrafficRun",
+  "TrainIsComing",
+  "WoodIsland",
+  "ZombieSurvival",
+];
+
 // 菜单逻辑
 let menuButton = document.querySelectorAll(".menu-button");
 
@@ -137,6 +228,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   //
   let top2games = fullData
     .filter((item) => item.category.toLowerCase() == "casual")
+    .filter((game) => group.includes(game.name))
     .slice(0, 6);
   top2.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -150,6 +242,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   //
   let top3games = fullData
     .filter((item) => item.category.toLowerCase() == "puzzle")
+    // .filter((game) => group.includes(game.name))
     .slice(0, 6);
   top3.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -166,6 +259,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       (item) =>
         !["puzzle", "casual", "action"].includes(item.category.toLowerCase())
     )
+    .filter((game) => group.includes(game.name))
     .slice();
   let otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
   others.innerHTML = `
