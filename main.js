@@ -30,10 +30,10 @@ let menuItems = categories
       <li>
         <a
           class="block p-3"
-          href="./category.html?name=${cat.slug}"
-          title="${cat.name}"
+          href="./category.html?name=${cat}"
+          title="${cat}"
         >
-          ${cat.name}
+          ${cat}
         </a>
       </li>
       `
@@ -184,17 +184,14 @@ if (pathname.endsWith(`/category.html`)) {
   let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
 
-  pageTitle.innerHTML = categories.find(
-    (item) => item.slug.toLowerCase() == queryId.toLowerCase()
-  ).name;
+  pageTitle.innerHTML = categories.filter(
+    (item) => item.toLowerCase() == queryId.toLowerCase()
+  );
 
   document.title = `${pageTitle.innerHTML} Games`;
 
   gameList.innerHTML = fullData
-    .filter(
-      (item) =>
-        item.category.toLowerCase() == queryId.toLowerCase().replace(/-/g, ` `)
-    )
+    .filter((item) => item.category.toLowerCase() == queryId.toLowerCase())
     .map(
       (item) => `
     <li class="flex justify-between items-center">
