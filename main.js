@@ -12,9 +12,11 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 // 游戏数据
 
 const domain = `https://cdn2.supereasygame.com`;
-const platform = `tgame1`;
+const platform = `uptapgame`;
 const fullData = data.games;
 const categories = data.categories;
+const ICON_FORMAT = `webp`;
+const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
 
 // let basepath = `/copy`;
 // let basepath = ``;
@@ -28,10 +30,10 @@ let menuItems = categories
       <li>
         <a
           class="block p-3"
-          href="./category.html?name=${cat.toLowerCase()}"
-          title="${cat}"
+          href="./category.html?name=${cat.slug}"
+          title="${cat.name}"
         >
-          ${cat}
+          ${cat.name}
         </a>
       </li>
       `
@@ -77,7 +79,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       <a href="./game.html?appid=${game.name}">
         <img
           class="inline-block rounded-lg"
-          src="${game.icon}"
+          src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
           alt="${game.title}"
           width="100"
           height="100"
@@ -111,7 +113,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
           <div class="flex space-x-1">
             <img
               class="rounded-lg border-2 border-white w-16 h-16 -mt-8 bg-white"
-              src="${item.icon}"
+              src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
               alt="${item.title}"
               width="100"
               height="100"
@@ -134,7 +136,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   `;
   //
   let top2games = fullData
-    .filter((item) => item.category.toLocaleLowerCase() == "casual")
+    .filter((item) => item.category.toLowerCase() == "casual")
     .slice(0, 6);
   top2.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -147,7 +149,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   `;
   //
   let top3games = fullData
-    .filter((item) => item.category.toLocaleLowerCase() == "puzzle")
+    .filter((item) => item.category.toLowerCase() == "puzzle")
     .slice(0, 6);
   top3.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -162,9 +164,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   let otherGames = fullData
     .filter(
       (item) =>
-        !["puzzle", "casual", "action"].includes(
-          item.category.toLocaleLowerCase()
-        )
+        !["puzzle", "casual", "action"].includes(item.category.toLowerCase())
     )
     .slice();
   let otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
@@ -184,9 +184,9 @@ if (pathname.endsWith(`/category.html`)) {
   let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
 
-  pageTitle.innerHTML = categories.filter(
-    (item) => item.toLocaleLowerCase() == queryId.toLocaleLowerCase()
-  );
+  pageTitle.innerHTML = categories.find(
+    (item) => item.slug.toLowerCase() == queryId.toLowerCase()
+  ).name;
 
   document.title = `${pageTitle.innerHTML} Games`;
 
@@ -199,7 +199,7 @@ if (pathname.endsWith(`/category.html`)) {
       <a class="flex space-x-3" href="./game.html?appid=${item.name}">
       <img
         class="object-cover h-20 w-20 rounded-lg"
-        src="${item.icon}"
+        src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
         alt="${item.title}"
         width="100"
         height="100"
@@ -244,7 +244,7 @@ if (pathname.endsWith(`/game.html`)) {
   let gameRelated = document.querySelector(`.game-related`);
 
   const currentGame = fullData.find(
-    (item) => item.name.toLocaleLowerCase() == queryId.toLocaleLowerCase()
+    (item) => item.name.toLowerCase() == queryId.toLowerCase()
   );
   // 设置标题
   pageTitle.innerHTML = currentGame.title;
@@ -252,7 +252,7 @@ if (pathname.endsWith(`/game.html`)) {
   gameInfo.innerHTML = `
       <img
         class="rounded-2xl w-32 h-32"
-        src="${currentGame.icon}"
+        src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
         alt="${currentGame.title}"
         width="200"
         height="200"
@@ -297,7 +297,7 @@ if (pathname.endsWith(`/game.html`)) {
       <a class="flex space-x-3" href="./game.html?appid=${item.name}">
         <img
           class="w-16 rounded-lg"
-          src="${item.icon}"
+          src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
           alt="${item.title}"
           width="100"
           height="100"
