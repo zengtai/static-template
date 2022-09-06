@@ -191,7 +191,10 @@ if (pathname.endsWith(`/category.html`)) {
   document.title = `${pageTitle.innerHTML} Games`;
 
   gameList.innerHTML = fullData
-    .filter((item) => item.category.toLowerCase() == queryId.toLowerCase())
+    .filter(
+      (item) =>
+        item.category.toLowerCase() == queryId.toLowerCase().replace(/-/g, ` `)
+    )
     .map(
       (item) => `
     <li class="flex justify-between items-center">
