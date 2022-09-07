@@ -191,8 +191,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   );
   //
   top1.innerHTML = `
-    <header class="flex mx-4 justify-between py-4">
-      <h2>Hot Games</h2>
+    <header class="flex mx-4 justify-between py-2">
+      <h2 class="hidden">Hot Games</h2>
     </header>
     <ul class="grid grid-cols-2 gap-2 m-4">
       ${top1games
