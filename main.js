@@ -344,6 +344,11 @@ if (pathname.endsWith(`/game.html`)) {
   pageTitle.innerHTML = currentGame.title;
   document.title = `Play ${currentGame.title} Now`;
   gameInfo.innerHTML = `
+      <a title="Play ${currentGame.title} Now"
+      class="link-play p-4 flex gap-3"
+      href="${domain}/newgames/minigame.html?appid=${
+    currentGame.name
+  }&platform=${platform}&t=20220906">
       <img
         class="rounded-2xl w-32 h-32"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
@@ -370,9 +375,10 @@ if (pathname.endsWith(`/game.html`)) {
           ><span class="text-gray-400">Play</span>
         </div>
       </div>
+      </a>
   `;
   gamePlay.innerHTML = `
-  <a
+  <a title="Play ${currentGame.title} Now"
   class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
   href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}&t=20220906"
   >Play</a
