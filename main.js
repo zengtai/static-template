@@ -102,12 +102,13 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
 
-const domain = `https://cdn.playfreegamer.com`;
-const platform = `uptapin2`;
+const domain = `https://cdn.playbleads.com`;
+const platform = `yole2`;
 const fullData = data.games;
 const categories = data.categories;
 const ICON_FORMAT = `webp`;
 const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
+// const PLAY_TAG = `20220908`;
 
 // let basepath = `/copy`;
 // let basepath = ``;
@@ -348,9 +349,9 @@ if (pathname.endsWith(`/game.html`)) {
       class="link-play p-4 flex gap-3"
       href="${domain}/newgames/minigame.html?appid=${
     currentGame.name
-  }&platform=${platform}&t=20220906">
+  }&platform=${platform}">
       <img
-        class="rounded-2xl w-32 h-32"
+        class="rounded-2xl w-24 h-24"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
         alt="${currentGame.title}"
         width="200"
