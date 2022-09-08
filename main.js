@@ -11,7 +11,7 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
 
-const domain = `https://cdn2.supereasygame.com`;
+const domain = `https://gamecdn.supereasygame.com`;
 const platform = `tgame1`;
 const fullData = data.games;
 const categories = data.categories;
