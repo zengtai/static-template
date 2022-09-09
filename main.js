@@ -381,7 +381,7 @@ if (pathname.endsWith(`/game.html`)) {
   gamePlay.innerHTML = `
   <a title="Play ${currentGame.title} Now"
   class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
-  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}&t=20220906"
+  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
   >Play</a
 >
   `;
