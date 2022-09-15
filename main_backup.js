@@ -89,12 +89,10 @@ const group = [
   "ZombieSurvival",
 ];
 
-const recommended = ["SuperSoccer", "DashCat"];
-
 // 菜单逻辑
 let menuButton = document.querySelectorAll(".menu-button");
 
-let menu = document.querySelector(".menu-panel");
+let menu = document.querySelector(".menu");
 
 function toggleMenu() {
   menu.classList.toggle(`hidden`);
@@ -165,29 +163,44 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   let top3 = document.querySelector(`.top3`);
   let others = document.querySelector(`.others`);
 
-  let homeContent = document.getElementById(`home-content`);
-
-  let showPlayed = false;
-  let showRecommended = true;
-
-  let topgames = fullData.filter((item) => recommended.includes(item.name));
+  function itemList(items) {
+    return items
+      .map(
+        (game) => `
+    <li class="text-center">
+      <a href="./game.html?appid=${game.name}">
+        <img
+          class="inline-block rounded-lg"
+          src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
+          alt="${game.title}"
+          width="100"
+          height="100"
+          loading="lazy"
+        />
+        <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
+        ${game.title}
+        </h2>
+      </a>
+    </li>
+    `
+      )
+      .join(``);
+  }
   //
-  function RecommendGames() {
-    let section = document.createElement(`section`);
-    let header = document.createElement(`header`);
-    let h2 = document.createElement(`h2`);
-    let ul = document.createElement(`ul`);
-    section.setAttribute(`class`, `top-games`);
-    header.setAttribute(`class`, `py-2`);
-    ul.setAttribute(`class`, `card-list`);
-
-    topgames.forEach((item) => {
-      let li = document.createElement(`li`);
-      li.setAttribute(
-        `class`,
-        `rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30`
-      );
-      li.innerHTML = `
+  let top1games = fullData.filter((item) =>
+    [`SuperSoccer`, `DashCat`].includes(item.name)
+  );
+  //
+  top1.innerHTML = `
+    <header class="flex mx-4 justify-between py-2">
+      <h2 class="hidden">Hot Games</h2>
+    </header>
+    <ul class="card-list">
+      ${top1games
+        .reverse()
+        .map(
+          (item) => `
+      <li class="rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30">
         <a href="./game.html?appid=${item.name}">
           <div class="flex space-x-1">
             <img
@@ -206,133 +219,58 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
           </svg>                         
           </span>
           </div>
+          
         </a>
-      `;
-      ul.append(li);
-    });
-
-    header.append(h2);
-    section.append(header, ul);
-    return section;
-  }
-
-  function Banner() {
-    let banner = document.createElement(`div`);
-    let bannerTitle = document.createElement(`div`);
-    let ins = document.createElement(`ins`);
-    let script = document.createElement(`script`);
-    banner.setAttribute(`class`, `banner`);
-    bannerTitle.innerHTML = `ADVERTISEMENT`;
-    bannerTitle.setAttribute(`class`, `text-center text-xs text-gray-400`);
-    ins.setAttribute(`class`, `adsbygoogle`);
-    ins.setAttribute(
-      `style`,
-      `display: flex; justify-content: center; background-color: #00000008`
-    );
-    ins.setAttribute(`data-ad-client`, `ca-pub-9209477879340784`);
-    ins.setAttribute(`data-ad-slot`, `5973598328`);
-    ins.setAttribute(`data-ad-format`, `auto`);
-    ins.setAttribute(`data-full-width-responsive`, `true`);
-    ins.setAttribute(`data-adtest`, `on`);
-    script.innerHTML = `(adsbygoogle = window.adsbygoogle || []).push({})`;
-    banner.append(bannerTitle, ins, script);
-    return banner;
-  }
-
-  if (showRecommended) {
-    homeContent.append(Banner(), RecommendGames());
-  }
-
-  categories.forEach((category, index) => {
-    let section = document.createElement(`section`);
-    let header = document.createElement(`header`);
-    let h2 = document.createElement(`h2`);
-    let a = document.createElement(`a`);
-    let ul = document.createElement(`ul`);
-    let fragment = document.createDocumentFragment();
-
-    header.append(h2, a);
-    section.append(header, ul);
-
-    section.setAttribute(`class`, `game-section`);
-    header.setAttribute(`class`, `section-header`);
-    ul.setAttribute(`class`, `section-list`);
-    a.setAttribute(`class`, `text-gray-400`);
-
-    h2.innerHTML = `${category.name} Games`;
-
-    let games = fullData.filter((item) => item.category == category.name);
-
-    // console.log(`games`, games);
-    if (games.length > 6) {
-      a.innerHTML = `More`;
-      a.setAttribute(`href`, `./category.html?name=${category.slug}`);
-    }
-
-    games
-      .slice()
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 6)
-      .forEach((game) => {
-        let li = document.createElement(`li`);
-        li.innerHTML = `
-        <a href="./game.html?appid=${game.name}">
-          <img
-            class="rounded-lg mx-auto"
-            src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
-            alt="${game.title}" width="100"
-            height="100"
-            width="100"
-            ${index > 0 ? `loading="lazy"` : ``}
-          />
-          <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
-            ${game.title}
-          </h2>
-          ${
-            showPlayed
-              ? `<div>
-                <span class="text-orange-400">${game.played}</span> Play
-              </div>`
-              : ``
-          }
-        </a>
-      `;
-        fragment.appendChild(li);
-      });
-
-    ul.appendChild(fragment);
-
-    if (index % 2 == 0) {
-      homeContent.append(section, Banner());
-    } else {
-      homeContent.append(section);
-    }
-  });
-
-  function itemList(items) {
-    return items
-      .map(
-        (game) => `
-      <li class="text-center">
-        <a href="./game.html?appid=${game.name}">
-          <img
-            class="inline-block rounded-lg"
-            src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
-            alt="${game.title}"
-            width="100"
-            height="100"
-            loading="lazy"
-          />
-          <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
-          ${game.title}
-          </h2>
-        </a>
-      </li>
-    `
-      )
-      .join(``);
-  }
+      </li>`
+        )
+        .join(``)}
+    </ul>
+  `;
   //
+  let top2games = fullData
+    .filter((item) => item.category.toLowerCase() == "casual")
+    // .filter((game) => group.includes(game.name))
+    .slice(0, 6);
+  top2.innerHTML = `
+    <header class="flex mx-4 justify-between py-4">
+      <h2>Casual Games</h2>
+      <a class="text-gray-400" href="./category.html?name=casual">More</a>
+    </header>
+    <ul class="grid grid-cols-3 gap-4 mx-4">
+      ${itemList(top2games)}
+    </ul>
+  `;
+  //
+  let top3games = fullData
+    .filter((item) => item.category.toLowerCase() == "puzzle")
+    // .filter((game) => group.includes(game.name))
+    .slice(0, 6);
+  top3.innerHTML = `
+    <header class="flex mx-4 justify-between py-4">
+      <h2>Puzzle Games</h2>
+      <a class="text-gray-400" href="./category.html?name=puzzle">More</a>
+    </header>
+    <ul class="grid grid-cols-3 gap-4 mx-4">
+      ${itemList(top3games)}
+    </ul>
+  `;
+  //
+  let otherGames = fullData
+    .filter(
+      (item) =>
+        !["puzzle", "casual", "action"].includes(item.category.toLowerCase())
+    )
+    .filter((game) => group.includes(game.name))
+    .slice();
+  let otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
+  others.innerHTML = `
+    <header class="flex mx-4 justify-between py-4">
+      <h2>Other Games</h2>
+    </header>
+    <ul class="grid grid-cols-3 gap-4 mx-4">
+      ${itemList(otherRandomGames)}
+    </ul>
+  `;
 }
 
 if (pathname.endsWith(`/category.html`)) {

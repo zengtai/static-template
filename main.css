@@ -10,3 +10,47 @@
   height: 20px;
   width: 20px;
 }
+
+#wrapper {
+  @apply min-h-screen flex flex-col text-sm max-w-3xl mx-auto;
+}
+
+#site-header {
+  @apply fixed z-20 inset-x-0 shadow bg-white max-w-3xl mx-auto;
+}
+
+.menu-icon {
+  @apply absolute left-2 top-1/2 -translate-y-1/2;
+}
+
+.close-icon {
+  @apply mt-3 block mx-auto;
+}
+
+.menu-panel {
+  @apply bg-white shadow-lg z-30 fixed inset-y-0 overflow-y-auto;
+}
+
+.menu-list {
+  @apply flex flex-col w-60 divide-y py-3 px-6;
+}
+
+.menu-list .item-link {
+  @apply block p-3;
+}
+
+.card-list {
+  @apply grid grid-cols-2 gap-2 m-4;
+}
+
+.game-section {
+  @apply bg-white pb-4;
+}
+
+.section-header {
+  @apply flex mx-4 justify-between py-4;
+}
+
+.section-list {
+  @apply grid grid-cols-3 gap-4 mx-4 text-center
+}
