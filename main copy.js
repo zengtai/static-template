@@ -1,6 +1,4 @@
-"use strict";
-
-var group = [
+const group = [
   "4096",
   "8BallKing",
   "AceMan",
@@ -91,12 +89,12 @@ var group = [
   "ZombieSurvival",
 ];
 
-var recommended = ["SuperSoccer", "DashCat"];
+const recommended = ["SuperSoccer", "DashCat"];
 
 // 菜单逻辑
-var menuButton = document.querySelectorAll(".menu-button");
+let menuButton = document.querySelectorAll(".menu-button");
 
-var menu = document.querySelector(".menu-panel");
+let menu = document.querySelector(".menu-panel");
 
 function toggleMenu() {
   menu.classList.toggle(`hidden`);
@@ -106,20 +104,20 @@ menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
 
-var domain = `https://cdn.playbleads.com`;
-var platform = `yole2`;
-var fullData = data.games;
-var categories = data.categories;
-var ICON_FORMAT = `webp`;
-var ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
-// var PLAY_TAG = `20220908`;
+const domain = `https://cdn.playbleads.com`;
+const platform = `yole2`;
+const fullData = data.games;
+const categories = data.categories;
+const ICON_FORMAT = `webp`;
+const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
+// const PLAY_TAG = `20220908`;
 
-// var basepath = `/copy`;
-// var basepath = ``;
+// let basepath = `/copy`;
+// let basepath = ``;
 
 // 菜单数据
-var menuList = document.querySelector(`.menu-list`);
-var menuItems = categories
+let menuList = document.querySelector(`.menu-list`);
+let menuItems = categories
   .map(
     (cat) =>
       `
@@ -136,7 +134,7 @@ var menuItems = categories
   )
   .join(``);
 
-var homeLink = `
+let homeLink = `
   <li>
     <a
       class="item-link"
@@ -151,38 +149,38 @@ var homeLink = `
 menuList.innerHTML = homeLink + menuItems;
 
 // 首页数据
-var pathname = window.location.pathname;
-var query = window.location.search;
+let pathname = window.location.pathname;
+let query = window.location.search;
 
 console.log(pathname);
 console.log(query);
 
-var pageTitle = document.querySelector(`.page-title`);
-var gameList = document.querySelector(".game-list");
+let pageTitle = document.querySelector(`.page-title`);
+let gameList = document.querySelector(".game-list");
 
 if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   // 首页处理
 
-  var homeContent = document.getElementById(`home-content`);
+  let homeContent = document.getElementById(`home-content`);
 
-  var showPlayed = false;
-  var showRecommended = true;
+  let showPlayed = false;
+  let showRecommended = true;
 
-  var topgames = fullData.filter((item) => recommended.includes(item.name));
+  let topgames = fullData.filter((item) => recommended.includes(item.name));
 
   homeContent.innerHTML = ``;
   //
   function RecommendGames() {
-    var section = document.createElement(`section`);
-    var header = document.createElement(`header`);
-    var h2 = document.createElement(`h2`);
-    var ul = document.createElement(`ul`);
+    let section = document.createElement(`section`);
+    let header = document.createElement(`header`);
+    let h2 = document.createElement(`h2`);
+    let ul = document.createElement(`ul`);
     section.setAttribute(`class`, `top-games`);
     header.setAttribute(`class`, `py-2`);
     ul.setAttribute(`class`, `card-list`);
 
     topgames.forEach((item) => {
-      var li = document.createElement(`li`);
+      let li = document.createElement(`li`);
       li.setAttribute(
         `class`,
         `rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30`
@@ -217,10 +215,10 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
 
   function Banner() {
-    var banner = document.createElement(`div`);
-    var bannerTitle = document.createElement(`div`);
-    var ins = document.createElement(`ins`);
-    var script = document.createElement(`script`);
+    let banner = document.createElement(`div`);
+    let bannerTitle = document.createElement(`div`);
+    let ins = document.createElement(`ins`);
+    let script = document.createElement(`script`);
     banner.setAttribute(`class`, `banner`);
     bannerTitle.innerHTML = `ADVERTISEMENT`;
     bannerTitle.setAttribute(`class`, `text-center text-xs text-gray-400`);
@@ -244,12 +242,12 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
 
   categories.forEach((category, index) => {
-    var section = document.createElement(`section`);
-    var header = document.createElement(`header`);
-    var h2 = document.createElement(`h2`);
-    var a = document.createElement(`a`);
-    var ul = document.createElement(`ul`);
-    var fragment = document.createDocumentFragment();
+    let section = document.createElement(`section`);
+    let header = document.createElement(`header`);
+    let h2 = document.createElement(`h2`);
+    let a = document.createElement(`a`);
+    let ul = document.createElement(`ul`);
+    let fragment = document.createDocumentFragment();
 
     header.append(h2, a);
     section.append(header, ul);
@@ -261,7 +259,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
 
     h2.innerHTML = `${category.name} Games`;
 
-    var games = fullData.filter((item) => item.category == category.name);
+    let games = fullData.filter((item) => item.category == category.name);
 
     // console.log(`games`, games);
     if (games.length > 6) {
@@ -274,7 +272,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       .sort(() => 0.5 - Math.random())
       .slice(0, 6)
       .forEach((game) => {
-        var li = document.createElement(`li`);
+        let li = document.createElement(`li`);
         li.innerHTML = `
         <a href="./game.html?appid=${game.name}">
           <img
@@ -337,8 +335,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
 
 if (pathname.endsWith(`/category.html`)) {
   // 分类页处理
-  var queryName = `?name=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  let queryName = `?name=`;
+  let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
 
   pageTitle.innerHTML = categories.filter(
@@ -394,16 +392,16 @@ if (pathname.endsWith(`/category.html`)) {
 
 if (pathname.endsWith(`/game.html`)) {
   // 详情页处理
-  var queryName = `?appid=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  let queryName = `?appid=`;
+  let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
 
-  var gameInfo = document.querySelector(`.game-information`);
-  var gameDesc = document.querySelector(`.game-description`);
-  var gamePlay = document.querySelector(`.game-play`);
-  var gameRelated = document.querySelector(`.game-related`);
+  let gameInfo = document.querySelector(`.game-information`);
+  let gameDesc = document.querySelector(`.game-description`);
+  let gamePlay = document.querySelector(`.game-play`);
+  let gameRelated = document.querySelector(`.game-related`);
 
-  var currentGame = fullData.find(
+  const currentGame = fullData.find(
     (item) => item.name.toLowerCase() == queryId.toLowerCase()
   );
   // 设置标题

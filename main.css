@@ -11,6 +11,10 @@
   width: 20px;
 }
 
+#loading {
+  @apply absolute z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
 #wrapper {
   @apply min-h-screen flex flex-col text-sm max-w-3xl mx-auto;
 }
