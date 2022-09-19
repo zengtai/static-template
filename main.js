@@ -141,7 +141,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   top2.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
       <h2>Casual Games</h2>
-      <a class="text-gray-400" href="./category.html?name=casual">More</a>
+      <a class="text-gray-400" href="./category.html?name=casual&from=home&t=more">More</a>
     </header>
     <ul class="grid grid-cols-3 gap-4 mx-4">
       ${itemList(top2games, `home`)}
@@ -154,7 +154,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   top3.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
       <h2>Puzzle Games</h2>
-      <a class="text-gray-400" href="./category.html?name=puzzle">More</a>
+      <a class="text-gray-400" href="./category.html?name=puzzle&from=home&t=more">More</a>
     </header>
     <ul class="grid grid-cols-3 gap-4 mx-4">
       ${itemList(top3games, `home`)}
