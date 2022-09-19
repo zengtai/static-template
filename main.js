@@ -27,7 +27,7 @@ let menuItems = categories
       <li>
         <a
           class="block p-3"
-          href="./category.html?name=${cat.toLowerCase()}"
+          href="./category.html?name=${cat.toLowerCase()}&from=menu"
           title="${cat}"
         >
           ${cat}
@@ -41,7 +41,7 @@ let homeLink = `
   <li>
     <a
       class="block p-3"
-      href="./index.html"
+      href="./index.html?from=menu"
       title="Home"
     >
       Home
@@ -68,12 +68,14 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   let top3 = document.querySelector(`.top3`);
   let others = document.querySelector(`.others`);
 
-  function itemList(items) {
+  function itemList(items, source) {
     return items
       .map(
         (game) => `
     <li class="text-center">
-      <a href="./game.html?appid=${game.name}">
+      <a href="./game.html?appid=${game.name}${
+          source ? `&from=${source}` : ``
+        }">
         <img
           class="inline-block rounded-lg"
           src="${game.icon}"
@@ -106,7 +108,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         .map(
           (item) => `
       <li class="rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30" style="color: white">
-        <a href="./game.html?appid=${item.name}">
+        <a href="./game.html?appid=${item.name}&from=home">
           <div class="flex space-x-1">
             <img
               class="rounded-lg border-2 border-[#ffffff] w-16 h-16 -mt-8 bg-white"
@@ -142,7 +144,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       <a class="text-gray-400" href="./category.html?name=casual">More</a>
     </header>
     <ul class="grid grid-cols-3 gap-4 mx-4">
-      ${itemList(top2games)}
+      ${itemList(top2games, `home`)}
     </ul>
   `;
   //
@@ -155,7 +157,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       <a class="text-gray-400" href="./category.html?name=puzzle">More</a>
     </header>
     <ul class="grid grid-cols-3 gap-4 mx-4">
-      ${itemList(top3games)}
+      ${itemList(top3games, `home`)}
     </ul>
   `;
   //
@@ -173,7 +175,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       <h2>Other Games</h2>
     </header>
     <ul class="grid grid-cols-3 gap-4 mx-4">
-      ${itemList(otherRandomGames)}
+      ${itemList(otherRandomGames, `home`)}
     </ul>
   `;
 }
@@ -183,7 +185,10 @@ if (pathname.endsWith(`/category.html`)) {
   let queryName = `?name=`;
   let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
-
+  queryId =
+    queryId.indexOf(`&from`) !== -1
+      ? queryId.slice(0, queryId.indexOf(`&from`))
+      : queryId;
   pageTitle.innerHTML = categories.filter(
     (item) => item.toLocaleLowerCase() == queryId.toLocaleLowerCase()
   );
@@ -196,7 +201,9 @@ if (pathname.endsWith(`/category.html`)) {
       (item) => `
     <li class="flex justify-between items-center">
     <div>
-      <a class="flex space-x-3" href="./game.html?appid=${item.name}">
+      <a class="flex space-x-3" href="./game.html?appid=${
+        item.name
+      }&from=category&t=icon">
       <img
         class="object-cover h-20 w-20 rounded-lg"
         src="${item.icon}"
@@ -223,7 +230,7 @@ if (pathname.endsWith(`/category.html`)) {
     <div class="text-center">
       <a
         class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
-        href="./game.html?appid=${item.name}"
+        href="./game.html?appid=${item.name}&from=category&t=btn"
         style="background-color: #6366f1; color: white;"
         >Play</a>
     </div>
@@ -238,6 +245,10 @@ if (pathname.endsWith(`/game.html`)) {
   let queryName = `?appid=`;
   let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
+  queryId =
+    queryId.indexOf(`&from`) !== -1
+      ? queryId.slice(0, queryId.indexOf(`&from`))
+      : queryId;
 
   let gameInfo = document.querySelector(`.game-information`);
   let gameDesc = document.querySelector(`.game-description`);
@@ -296,7 +307,7 @@ if (pathname.endsWith(`/game.html`)) {
     .map(
       (item) => `
     <li class="flex justify-between items-center">
-      <a class="flex space-x-3" href="./game.html?appid=${item.name}">
+      <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=game&t=icon">
         <img
           class="object-cover h-16 w-16 rounded-lg"
           src="${item.icon}"
@@ -321,7 +332,7 @@ if (pathname.endsWith(`/game.html`)) {
         <a
           class="inline-block rounded-full uppercase py-2 w-24"
           style="background-color: #6366f1; color: white;"
-          href="./game.html?appid=${item.name}"
+          href="./game.html?appid=${item.name}&from=game&t=btn"
           >Play</a
         >
       </div>
