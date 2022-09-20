@@ -95,7 +95,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
   //
   let top1games = fullData.filter((item) =>
-    [`SuperSoccer`, `DashCat`].includes(item.name)
+    [`BoardTheTrain`, `FireTheGun`].includes(item.name)
   );
   //
   top1.innerHTML = `
