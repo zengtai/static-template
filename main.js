@@ -10,8 +10,8 @@ function toggleMenu() {
 menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
-const platform = `mnew`;
-const domain = `https://gamecdn.supereasygame.com`;
+const platform = `tpal`;
+const domain = `https://cdn.playgames.mobi`;
 const fullData = data.games;
 const categories = data.categories;
 
