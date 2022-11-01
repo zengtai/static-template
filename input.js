@@ -190,65 +190,7 @@ let selectedGames = [
   "AnipopLink",
 ];
 
-let featuredGames = [
-  // puzzle
-  "MyHome",
-  "PianoKeys", // 2
-  "TrainIsComing", //3
-  "SpinTheMaze", // 4
-  // arcade
-  "IronAttack", // 1
-  "JumpSmash", // 2
-  "TrafficRun", // 3
-  "HiTaxi", // 4
-  "BoardTheTrain", // 5
-  "LostInLust", // 6
-  // "JumpingMonkey", // 6
-  "TwistyRoad", // 7
-  "FlyPass", // 8
-  "DressQueen",
-  // "CrayonPop",
-  "CrazyRace", // 10
-  "HungryMonster", // 11
-  // sports
-  "", // 1
-  "8BallKing", // 2
-  "ArcheryMaster", // 3
-  // shooting
-  "BestShooter",
-  "GunShooter", // 2
-  "ArcheryKing",
-  "AirBrawl",
-  "CrackShot",
-  "KillAllZombies", // 6
-  "BulletMaster3D", // 7
-  "BulletMan",
-  "FireTheGun", // 9
-  "MrBullet",
-  "MergeGuns3D",
-  "ShootingCubes", // 12
-  // strategy
-  "MagicBomb",
-  "BombingTime", // 2
-  "MergeAndDefense", // 3
-  "DefenseTower", // 4
-  "TrappedPirate", // 5
-  "FisherMan", // 6
-  // racing
-  "SkyRunning3D", // 1
-  "SkatingMaster",
-  "FeverRacing", // 3
-  "ColorBall3D", // 4
-  // adventure
-  // simulation
-  // match 3
-  // casual
-  // io
-  // girl
-];
-
-let gamesForHome = ["MyHome",
-  "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"
+let gamesForHome = ["MyHome", "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"
   ,]
 
 let recommended = ["LostInLust", "MyHome"];
@@ -281,13 +223,14 @@ function resolveUrlParams(query, key) {
 
 const domain = `https://cdn2.supereasygame.com`;
 const platform = `gpbox`;
-let fullData = data.games.filter(i => selectedGames.includes(i.name));
+let fullData = data.games.filter(i => selectedGames.includes(i.name)); // 按筛选的游戏取数据
 let tmpCategories = [...new Set(fullData.map(i => i.category))];
 let categories = data.categories.filter(i => tmpCategories.includes(i.name));
 
-console.log(`categories: `, categories);
-let ICON_FORMAT = `jpg`;
-let ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
+// console.log(`categories: `, categories);
+
+const ICON_FORMAT = `jpg`;
+const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
 // let PLAY_TAG = `20220908`;
 
 // let basepath = `/copy`;
@@ -302,7 +245,7 @@ let menuItems = categories
       <li>
         <a
           class="item-link"
-          href="./category.html?name=${cat.slug}"
+          href="./category.html?name=${cat.slug}?from=menu"
           title="${cat.name}"
         >
           ${cat.name}
@@ -316,7 +259,7 @@ let homeLink = `
   <li>
     <a
       class="item-link"
-      href="./index.html"
+      href="./index.html?from=menu"
       title="Home"
     >
       Home

@@ -7,81 +7,6 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symb
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 var selectedGames = ["4096", "8BallKing", "AceMan", "AirBrawl", "AirHockey3D", "AmazingRoad", "AntRun", "ArcheryKing", "ArcheryMaster", "AttackHero", "BatterKing", "BattleBurger", "BestShooter", "BigEater", "BigSword", "BilliardKing", "BlockGun3D", "BlockMaster", "BlockMaze", "BoardTheTrain", "BombingTime", "BoomingPlant", "BounceShooter", "BrainMaster", "BraveArcher", "BubblePop", "BuilderRun", "BulletMan", "BulletMaster3D", "CandyHit", "CityExpress", "CleverJump", "CleverRescue", "ColorBall3D", "ColorBead", "ColorCrash", "ColorHammer", "ColorRing", "ColorSplash", "CopyLaser", "CountingMaster", "CrackShot", "CrashTower3D", "CrayonPop", "CrazyDrift", "CrazyHammer", "CrazyKart3D", "CrazyKnife", "CrazyMoto", "CrazyPortal", "CrazyRace", "DartsKing3D", "DashCat", "DeathRun", "DigEscape", "DressQueen", "EasyCharger", "FeedMaster", "FeverRacing", "FierceCity", "FillTheGlass", "FinalBattle", "FingerCannon", "FireTheGun", "FisherMan", "FruitMonster", "FuryEdge", "GlidingCharger", "GoldenBoot", "GoldenGlove", "GunShooter", "HamsterRun", "HappyTetris", "HelpTheSheep", "HiTaxi", "HumanTower", "HungryMonster", "Hurricane", "IdleRestaurantTycoon", "ImEmpire", "IronAttack", "JumpSmash", "KillAllZombies", "Knife", "LetMeIn", "LittleFarm", "LittleMiner", "LostInLust", "MagicCarpenter", "MagicDraw", "MagicJigsaw", "MagicNumber", "MagicPaint", "MagicPainter", "MagicParkour", "MagicWorm", "MahjongLink", "MahjongLink3D", "MatchingCook", "MelodyLink", "MergeAndDefense", "MergeCat", "MergeGuns3D", "MergeKill", "MergeMagicJewellery", "Mining", "MonsterCrash", "MrBullet", "MrRacer", "MyBowling3D", "MyCat", "MyTerritory", "NastyBomb", "OpenFire", "PandaRescue", "PowerShooter", "RollingAgent", "RollingBall", "RoofRunner", "RushAndFire", "SausageRun", "SharkisComing", "ShootingStar", "SnakeHit", "SoccerHero", "SpinTheMaze", "SuperArcher", "SuperCoaster", "SuperSoccer", "TinyWar", "TrafficRun", "TrainIsComing", "WoodIsland", "ZombieSurvival", "CrazyGunfight", "PenguinDash", "PuppyRun", "RainbowSplash", "RelivedLife", "ShootSmash", "SnakeGo", "Super2048", "SuperMiner", "SuperCells", "TheSameWorld", "UltraDrift", "VirusWar", "FlyPass", "FrozenMagic", "HappyBilliards", "HarvestStory", "IceEscape", "MagicBomb", "MyHome", "PetRun", "RocketJump", "SaveThePets", "ShootingCubes", "SkatingMaster", "SkyRunning3D", "SplittingCells", "SuperDefense", "SuperGolf", "SuperThrow", "TwistyRoad", "WildRoll", "DefenseTower", "DragonCrush", "HelpTheZombie", "StickmanVsZombies", "Transform", "Chess3D", "DeathJump", "FairyTalesPuzzle", "HillRacing", "JumpingMonkey", "PianoKeys", "PipePuzzle", "SolitaireClassic", "ZooBlast", "ZumaMarbles", "TrappedPirate", "CrazyJump", "RushingRover", "TableTennisChampionship", "PlantBeatZombies", "AnipopLink"];
-var featuredGames = [
-// puzzle
-"MyHome", "PianoKeys",
-// 2
-"TrainIsComing",
-//3
-"SpinTheMaze",
-// 4
-// arcade
-"IronAttack",
-// 1
-"JumpSmash",
-// 2
-"TrafficRun",
-// 3
-"HiTaxi",
-// 4
-"BoardTheTrain",
-// 5
-"LostInLust",
-// 6
-// "JumpingMonkey", // 6
-"TwistyRoad",
-// 7
-"FlyPass",
-// 8
-"DressQueen",
-// "CrayonPop",
-"CrazyRace",
-// 10
-"HungryMonster",
-// 11
-// sports
-"",
-// 1
-"8BallKing",
-// 2
-"ArcheryMaster",
-// 3
-// shooting
-"BestShooter", "GunShooter",
-// 2
-"ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies",
-// 6
-"BulletMaster3D",
-// 7
-"BulletMan", "FireTheGun",
-// 9
-"MrBullet", "MergeGuns3D", "ShootingCubes",
-// 12
-// strategy
-"MagicBomb", "BombingTime",
-// 2
-"MergeAndDefense",
-// 3
-"DefenseTower",
-// 4
-"TrappedPirate",
-// 5
-"FisherMan",
-// 6
-// racing
-"SkyRunning3D",
-// 1
-"SkatingMaster", "FeverRacing",
-// 3
-"ColorBall3D" // 4
-// adventure
-// simulation
-// match 3
-// casual
-// io
-// girl
-];
-
 var gamesForHome = ["MyHome", "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"];
 var recommended = ["LostInLust", "MyHome"];
 var AD_MODE = "dev";
@@ -113,14 +38,16 @@ var domain = "https://cdn2.supereasygame.com";
 var platform = "gpbox";
 var fullData = data.games.filter(function (i) {
   return selectedGames.includes(i.name);
-});
+}); // 按筛选的游戏取数据
 var tmpCategories = _toConsumableArray(new Set(fullData.map(function (i) {
   return i.category;
 })));
 var categories = data.categories.filter(function (i) {
   return tmpCategories.includes(i.name);
 });
-console.log("categories: ", categories);
+
+// console.log(`categories: `, categories);
+
 var ICON_FORMAT = "jpg";
 var ICON_PATH = "https://cdn.iwantalipstick.com/gameicon2/".concat(ICON_FORMAT, "/");
 // let PLAY_TAG = `20220908`;
@@ -131,9 +58,9 @@ var ICON_PATH = "https://cdn.iwantalipstick.com/gameicon2/".concat(ICON_FORMAT, 
 // 菜单数据
 var menuList = document.querySelector(".menu-list");
 var menuItems = categories.map(function (cat) {
-  return "\n      <li>\n        <a\n          class=\"item-link\"\n          href=\"./category.html?name=".concat(cat.slug, "\"\n          title=\"").concat(cat.name, "\"\n        >\n          ").concat(cat.name, "\n        </a>\n      </li>\n      ");
+  return "\n      <li>\n        <a\n          class=\"item-link\"\n          href=\"./category.html?name=".concat(cat.slug, "?from=menu\"\n          title=\"").concat(cat.name, "\"\n        >\n          ").concat(cat.name, "\n        </a>\n      </li>\n      ");
 }).join("");
-var homeLink = "\n  <li>\n    <a\n      class=\"item-link\"\n      href=\"./index.html\"\n      title=\"Home\"\n    >\n      Home\n    </a>\n  </li>\n";
+var homeLink = "\n  <li>\n    <a\n      class=\"item-link\"\n      href=\"./index.html?from=menu\"\n      title=\"Home\"\n    >\n      Home\n    </a>\n  </li>\n";
 menuList.innerHTML = homeLink + menuItems;
 
 // 首页数据
@@ -230,18 +157,18 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
       a.setAttribute("href", "./category.html?name=".concat(category.slug, "&from=home"));
     }
     games.slice()
-    // .filter((i) => featuredGames.includes(i.name))
-    // .sort(() => 0.5 - Math.random()) // 随机
-    // .sort((a, b) => new Date(a.time) < new Date(b.time) ? 1 : -1)
-    .sort(function (a, b) {
-      return gamesForHome.indexOf(a.name) > gamesForHome.indexOf(b.name) ? 1 : -1;
-    })
-    // .slice(0, index === 1 || index === 3 ? 12 : 6)
-    .forEach(function (game) {
-      var li = document.createElement("li");
-      li.innerHTML = "\n        <a href=\"./game.html?appid=".concat(game.name, "&from=home\">\n          <img\n            class=\"rounded-lg mx-auto\"\n            src=\"").concat(ICON_PATH).concat(game.name, ".").concat(ICON_FORMAT, "\"\n            alt=\"").concat(game.title, "\" width=\"100\"\n            height=\"100\"\n            width=\"100\"\n            ").concat(index > 0 ? "loading=\"lazy\"" : "", "\n          />\n          <h2 class=\"pt-2 whitespace-nowrap overflow-hidden text-ellipsis\">\n            ").concat(game.title, "\n          </h2>\n          ").concat(showPlayed ? "<div>\n                <span class=\"text-orange-400\">".concat(game.played, "</span> Play\n              </div>") : "", "\n        </a >\n  ");
-      fragment.appendChild(li);
-    });
+      // .filter((i) => featuredGames.includes(i.name))
+      // .sort(() => 0.5 - Math.random()) // 随机
+      // .sort((a, b) => new Date(a.time) < new Date(b.time) ? 1 : -1)
+      .sort(function (a, b) {
+        return gamesForHome.indexOf(a.name) > gamesForHome.indexOf(b.name) ? 1 : -1;
+      })
+      // .slice(0, index === 1 || index === 3 ? 12 : 6)
+      .forEach(function (game) {
+        var li = document.createElement("li");
+        li.innerHTML = "\n        <a href=\"./game.html?appid=".concat(game.name, "&from=home\">\n          <img\n            class=\"rounded-lg mx-auto\"\n            src=\"").concat(ICON_PATH).concat(game.name, ".").concat(ICON_FORMAT, "\"\n            alt=\"").concat(game.title, "\" width=\"100\"\n            height=\"100\"\n            width=\"100\"\n            ").concat(index > 0 ? "loading=\"lazy\"" : "", "\n          />\n          <h2 class=\"pt-2 whitespace-nowrap overflow-hidden text-ellipsis\">\n            ").concat(game.title, "\n          </h2>\n          ").concat(showPlayed ? "<div>\n                <span class=\"text-orange-400\">".concat(game.played, "</span> Play\n              </div>") : "", "\n        </a >\n  ");
+        fragment.appendChild(li);
+      });
     ul.appendChild(fragment);
     if (index % 2 == 0) {
       homeContent.append(section, Banner());
