@@ -1,3 +1,3 @@
 使用 Tailwind CSS
 
-`npx tailwindcss build main.css -o output.css --watch --minify`
+`npx tailwindcss build -i main.css -o output.css --watch --minify`

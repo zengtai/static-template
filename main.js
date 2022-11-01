@@ -1,6 +1,6 @@
 "use strict";
 
-var group = [
+var selectedGames = [
   "4096",
   "8BallKing",
   "AceMan",
@@ -31,6 +31,8 @@ var group = [
   "BulletMan",
   "BulletMaster3D",
   "CandyHit",
+  "CityExpress",
+  "CleverJump",
   "CleverRescue",
   "ColorBall3D",
   "ColorBead",
@@ -42,34 +44,78 @@ var group = [
   "CountingMaster",
   "CrackShot",
   "CrashTower3D",
+  "CrayonPop",
   "CrazyDrift",
   "CrazyHammer",
+  "CrazyKart3D",
+  "CrazyKnife",
+  "CrazyMoto",
+  "CrazyPortal",
   "CrazyRace",
-  "CutMaster",
+  "DartsKing3D",
   "DashCat",
+  "DeathRun",
   "DigEscape",
+  "DressQueen",
   "EasyCharger",
+  "FeedMaster",
+  "FeverRacing",
   "FierceCity",
   "FillTheGlass",
+  "FinalBattle",
+  "FingerCannon",
+  "FireTheGun",
+  "FisherMan",
   "FruitMonster",
   "FuryEdge",
   "GlidingCharger",
   "GoldenBoot",
   "GoldenGlove",
+  "GunShooter",
+  "HamsterRun",
+  "HappyTetris",
+  "HelpTheSheep",
+  "HiTaxi",
+  "HumanTower",
+  "HungryMonster",
   "Hurricane",
+  "IdleRestaurantTycoon",
+  "ImEmpire",
   "IronAttack",
   "JumpSmash",
+  "KillAllZombies",
+  "Knife",
   "LetMeIn",
   "LittleFarm",
   "LittleMiner",
   "LostInLust",
+  "MagicCarpenter",
   "MagicDraw",
+  "MagicJigsaw",
+  "MagicNumber",
   "MagicPaint",
+  "MagicPainter",
+  "MagicParkour",
+  "MagicWorm",
+  "MahjongLink",
+  "MahjongLink3D",
+  "MatchingCook",
+  "MelodyLink",
+  "MergeAndDefense",
+  "MergeCat",
   "MergeGuns3D",
   "MergeKill",
+  "MergeMagicJewellery",
+  "Mining",
+  "MonsterCrash",
+  "MrBullet",
   "MrRacer",
+  "MyBowling3D",
+  "MyCat",
   "MyTerritory",
   "NastyBomb",
+  "OpenFire",
+  "PandaRescue",
   "PowerShooter",
   "RollingAgent",
   "RollingBall",
@@ -89,9 +135,121 @@ var group = [
   "TrainIsComing",
   "WoodIsland",
   "ZombieSurvival",
+  "CrazyGunfight",
+  "PenguinDash",
+  "PuppyRun",
+  "RainbowSplash",
+  "RelivedLife",
+  "ShootSmash",
+  "SnakeGo",
+  "Super2048",
+  "SuperMiner",
+  "SuperCells",
+  "TheSameWorld",
+  "UltraDrift",
+  "VirusWar",
+  "FlyPass",
+  "FrozenMagic",
+  "HappyBilliards",
+  "HarvestStory",
+  "IceEscape",
+  "MagicBomb",
+  "MyHome",
+  "PetRun",
+  "RocketJump",
+  "SaveThePets",
+  "ShootingCubes",
+  "SkatingMaster",
+  "SkyRunning3D",
+  "SplittingCells",
+  "SuperDefense",
+  "SuperGolf",
+  "SuperThrow",
+  "TwistyRoad",
+  "WildRoll",
+  "DefenseTower",
+  "DragonCrush",
+  "HelpTheZombie",
+  "StickmanVsZombies",
+  "Transform",
+  "Chess3D",
+  "DeathJump",
+  "FairyTalesPuzzle",
+  "HillRacing",
+  "JumpingMonkey",
+  "PianoKeys",
+  "PipePuzzle",
+  "SolitaireClassic",
+  "ZooBlast",
+  "ZumaMarbles",
+  "TrappedPirate",
+  "CrazyJump",
+  "RushingRover",
+  "TableTennisChampionship",
+  "PlantBeatZombies",
+  "AnipopLink",
 ];
 
-var recommended = ["SuperSoccer", "DashCat"];
+let featuredGames = [
+  // puzzle
+  "MyHome",
+  "PianoKeys", // 2
+  "TrainIsComing", //3
+  "SpinTheMaze", // 4
+  // arcade
+  "IronAttack", // 1
+  "JumpSmash", // 2
+  "TrafficRun", // 3
+  "HiTaxi", // 4
+  "BoardTheTrain", // 5
+  "LostInLust", // 6
+  // "JumpingMonkey", // 6
+  "TwistyRoad", // 7
+  "FlyPass", // 8
+  "DressQueen",
+  // "CrayonPop",
+  "CrazyRace", // 10
+  "HungryMonster", // 11
+  // sports
+  "", // 1
+  "8BallKing", // 2
+  "ArcheryMaster", // 3
+  // shooting
+  "BestShooter",
+  "GunShooter", // 2
+  "ArcheryKing",
+  "AirBrawl",
+  "CrackShot",
+  "KillAllZombies", // 6
+  "BulletMaster3D", // 7
+  "BulletMan",
+  "FireTheGun", // 9
+  "MrBullet",
+  "MergeGuns3D",
+  "ShootingCubes", // 12
+  // strategy
+  "MagicBomb",
+  "BombingTime", // 2
+  "MergeAndDefense", // 3
+  "DefenseTower", // 4
+  "TrappedPirate", // 5
+  "FisherMan", // 6
+  // racing
+  "SkyRunning3D", // 1
+  "SkatingMaster",
+  "FeverRacing", // 3
+  "ColorBall3D", // 4
+  // adventure
+  // simulation
+  // match 3
+  // casual
+  // io
+  // girl
+];
+
+var recommended = ["LostInLust", "MyHome"];
+
+var AD_MODE = `dev`;
 
 // 菜单逻辑
 var menuButton = document.querySelectorAll(".menu-button");
@@ -104,11 +262,22 @@ function toggleMenu() {
 
 menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
+// URL地址参数生成对象
+function resolveUrlParams(query, key) {
+  let params = {};
+  let str = query.split("?")[1].split("&");
+  str.forEach((i) => {
+    let a = i.split("=");
+    params[a[0]] = a[1]
+  })
+  return params[key];
+}
+
 // 游戏数据
 
-var domain = `https://cdn.playbleads.com`;
-var platform = `yole2`;
-var fullData = data.games;
+var domain = `https://cdn2.supereasygame.com`;
+var platform = `gpbox`;
+var fullData = data.games.filter(i => selectedGames.includes(i.name));
 var categories = data.categories;
 var ICON_FORMAT = `webp`;
 var ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
@@ -188,7 +357,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         `rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30`
       );
       li.innerHTML = `
-        <a href="./game.html?appid=${item.name}">
+        <a href="./game.html?appid=${item.name}&from=home">
           <div class="flex space-x-1">
             <img
               class="rounded-lg border-2 border-white w-16 h-16 -mt-8 bg-white"
@@ -233,7 +402,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     ins.setAttribute(`data-ad-slot`, `5973598328`);
     ins.setAttribute(`data-ad-format`, `auto`);
     ins.setAttribute(`data-full-width-responsive`, `true`);
-    ins.setAttribute(`data-adtest`, `on`);
+    AD_MODE === "dev" ? ins.setAttribute(`data-adtest`, `on`) : null;
     script.innerHTML = `(adsbygoogle = window.adsbygoogle || []).push({})`;
     banner.append(bannerTitle, ins, script);
     return banner;
@@ -259,24 +428,28 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     ul.setAttribute(`class`, `section-list`);
     a.setAttribute(`class`, `text-gray-400`);
 
-    h2.innerHTML = `${category.name} Games`;
-
     var games = fullData.filter((item) => item.category == category.name);
+    let total = games.length
+
+    h2.innerHTML = `${category.name} Games - ${total}`;
 
     // console.log(`games`, games);
-    if (games.length > 6) {
+    if (total > 6) {
       a.innerHTML = `More`;
-      a.setAttribute(`href`, `./category.html?name=${category.slug}`);
+      a.setAttribute(`href`, `./category.html?name=${category.slug}&from=home`);
     }
 
     games
       .slice()
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 6)
+      // .filter((i) => featuredGames.includes(i.name))
+      // .sort(() => 0.5 - Math.random()) // 随机
+      .sort((a, b) => new Date(a.time) > new Date(b.time) ? 1 : -1)
+      .sort((a, b) => featuredGames.indexOf(a.name) < featuredGames.indexOf(b.name) ? 1 : -1)
+      .slice(0, index === 1 || index === 3 ? 12 : 6)
       .forEach((game) => {
         var li = document.createElement(`li`);
         li.innerHTML = `
-        <a href="./game.html?appid=${game.name}">
+        <a href="./game.html?appid=${game.name}&from=home">
           <img
             class="rounded-lg mx-auto"
             src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
@@ -288,15 +461,14 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
           <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
             ${game.title}
           </h2>
-          ${
-            showPlayed
-              ? `<div>
+          ${showPlayed
+            ? `<div>
                 <span class="text-orange-400">${game.played}</span> Play
               </div>`
-              : ``
+            : ``
           }
-        </a>
-      `;
+        </a >
+  `;
         fragment.appendChild(li);
       });
 
@@ -313,7 +485,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     return items
       .map(
         (game) => `
-      <li class="text-center">
+      <li class="text-center" >
         <a href="./game.html?appid=${game.name}">
           <img
             class="inline-block rounded-lg"
@@ -324,11 +496,11 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
             loading="lazy"
           />
           <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
-          ${game.title}
+            ${game.title}
           </h2>
         </a>
-      </li>
-    `
+      </li >
+      `
       )
       .join(``);
   }
@@ -337,8 +509,14 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
 
 if (pathname.endsWith(`/category.html`)) {
   // 分类页处理
-  var queryName = `?name=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  // var queryName = `?name=`;
+  // var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+
+  // console.log(`query: `, query.split("?")[1].split("&"));
+
+  let queryId = resolveUrlParams(query, `name`);
+
+  // console.log(`params :`, params);
   console.log(`queryId`, queryId);
 
   pageTitle.innerHTML = categories.filter(
@@ -353,50 +531,42 @@ if (pathname.endsWith(`/category.html`)) {
         item.category.toLowerCase() == queryId.toLowerCase().replace(/-/g, ` `)
     )
     .map(
-      (item) => `
-    <li class="flex justify-between items-center">
-    <div>
-      <a class="flex space-x-3" href="./game.html?appid=${item.name}">
-      <img
-        class="object-cover h-20 w-20 rounded-lg"
-        src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
-        alt="${item.title}"
-        width="100"
-        height="100"
-        loading="lazy"
-      />
-      <div>
-        <h2
-          class="pt-2"
-        >
-          ${item.title}
-        </h2>
-        <div class="space-x-1">
-          <span class="text-orange-400">${
-            (item.played && item.played) || 0
-          }</span
-          ><span class="text-gray-400 text-center">Play</span>
-        </div>
-      </div>
-      </a>
-    </div>
-    <div class="text-center">
-      <a
-        class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
-        href="./game.html?appid=${item.name}"
-        >Play</a>
-    </div>
-  </li>
-  `
+      (item, index) => `
+        <li class="flex justify-between items-center">
+          <div>
+            <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=category">
+            <img
+              class="object-cover h-20 w-20 rounded-lg"
+              src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
+              alt="${item.title}"
+              width="100"
+              height="100"
+              loading=${index < 6 ? "eager" : "lazy"}
+            />
+            <div>
+              <h2 class="pt-2">${item.title}</h2>
+              <div class="space-x-1">
+                <span class="text-orange-400">${(item.played && item.played) || 0
+        }</span><span class="text-gray-400 text-center">Play</span>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="text-center">
+            <a
+              class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
+              href="./game.html?appid=${item.name}&from=category"
+              >Play</a>
+          </div>
+        </li>
+      `
     )
     .join(``);
 }
 
 if (pathname.endsWith(`/game.html`)) {
   // 详情页处理
-  var queryName = `?appid=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
-  console.log(`queryId`, queryId);
+  let queryId = resolveUrlParams(query, `appid`);
 
   var gameInfo = document.querySelector(`.game-information`);
   var gameDesc = document.querySelector(`.game-description`);
@@ -407,14 +577,10 @@ if (pathname.endsWith(`/game.html`)) {
     (item) => item.name.toLowerCase() == queryId.toLowerCase()
   );
   // 设置标题
-  pageTitle.innerHTML = currentGame.title;
+  pageTitle.innerHTML = ``;
   document.title = `Play ${currentGame.title} Now`;
   gameInfo.innerHTML = `
-      <a title="Play ${currentGame.title} Now"
-      class="link-play p-4 flex gap-3"
-      href="${domain}/newgames/minigame.html?appid=${
-    currentGame.name
-  }&platform=${platform}">
+    <a title="Play ${currentGame.title} Now" class="link-play p-4 flex gap-3" href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}">
       <img
         class="rounded-2xl w-24 h-24"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
@@ -435,20 +601,18 @@ if (pathname.endsWith(`/game.html`)) {
           <span class="text-gray-400">${currentGame.stars}</span>
         </div>
         <div class="space-x-1">
-          <span class="text-orange-400">${
-            currentGame.played ? currentGame.played : `120.3K`
-          }</span
-          ><span class="text-gray-400">Play</span>
+          <span class="text-orange-400">${currentGame.played ? currentGame.played : `120.3K`}</span><span class="text-gray-400">Play</span>
         </div>
       </div>
-      </a>
+    </a >
   `;
   gamePlay.innerHTML = `
-  <a title="Play ${currentGame.title} Now"
-  class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
-  href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}"
-  >Play</a
->
+    <a
+      title="Play ${currentGame.title} Now"
+      class="inline-block rounded-full uppercase bg-indigo-500 text-white py-3 w-56"
+      href="${domain}/newgames/minigame.html?appid=${currentGame.name}&platform=${platform}">
+      Play
+    </a>
   `;
   gameDesc.innerHTML = currentGame.description;
 
@@ -459,36 +623,35 @@ if (pathname.endsWith(`/game.html`)) {
     .slice(0, 3)
     .map(
       (item) => `
-    <li class="flex justify-between items-center">
-      <a class="flex space-x-3" href="./game.html?appid=${item.name}">
-        <img
-          class="w-16 rounded-lg"
-          src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
-          alt="${item.title}"
-          width="100"
-          height="100"
-          loading="lazy"
-        />
-        <div>
-          <h2
-            class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis"
-          >
-          ${item.title}
-          </h2>
-          <div class="space-x-1">
-            <span class="text-orange-400">${item.played}</span
-            ><span class="text-gray-400 text-center">Play</span>
+      <li class="flex justify-between items-center">
+        <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=detail">
+          <img
+            class="w-16 rounded-lg"
+            src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
+            alt="${item.title}"
+            width="100"
+            height="100"
+            loading="lazy"
+          />
+          <div>
+            <h2
+              class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis"
+            >
+            ${item.title}
+            </h2>
+            <div class="space-x-1">
+              <span class="text-orange-400">${item.played}</span
+              ><span class="text-gray-400 text-center">Play</span>
+            </div>
           </div>
+        </a>
+        <div class="text-center">
+          <a
+            class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
+            href="./game.html?appid=${item.name}&from=detail"
+            >Play</a>
         </div>
-      </a>
-      <div class="text-center">
-        <a
-          class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
-          href="./game.html?appid=${item.name}"
-          >Play</a
-        >
-      </div>
-    </li>
+      </li>
     `
     )
     .join(``);

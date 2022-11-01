@@ -28,11 +28,11 @@
 }
 
 .close-icon {
-  @apply mt-3 block mx-auto;
+  @apply absolute -right-6 mt-3 block mx-auto bg-sky-500;
 }
 
 .menu-panel {
-  @apply bg-white shadow-lg z-30 fixed inset-y-0 overflow-y-auto;
+  @apply bg-white shadow-lg z-30 fixed inset-y-0 border-l-4 border-l-sky-500;
 }
 
 .menu-list {
