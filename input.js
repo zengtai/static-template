@@ -1,6 +1,6 @@
 "use strict";
 
-var selectedGames = [
+let selectedGames = [
   "4096",
   "8BallKing",
   "AceMan",
@@ -247,14 +247,18 @@ let featuredGames = [
   // girl
 ];
 
-var recommended = ["LostInLust", "MyHome"];
+let gamesForHome = ["MyHome",
+  "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"
+  ,]
 
-var AD_MODE = `dev`;
+let recommended = ["LostInLust", "MyHome"];
+
+let AD_MODE = `dev`;
 
 // 菜单逻辑
-var menuButton = document.querySelectorAll(".menu-button");
+let menuButton = document.querySelectorAll(".menu-button");
 
-var menu = document.querySelector(".menu-panel");
+let menu = document.querySelector(".menu-panel");
 
 function toggleMenu() {
   menu.classList.toggle(`hidden`);
@@ -275,20 +279,23 @@ function resolveUrlParams(query, key) {
 
 // 游戏数据
 
-var domain = `https://cdn2.supereasygame.com`;
-var platform = `gpbox`;
-var fullData = data.games.filter(i => selectedGames.includes(i.name));
-var categories = data.categories;
-var ICON_FORMAT = `jpg`;
-var ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
-// var PLAY_TAG = `20220908`;
+const domain = `https://cdn2.supereasygame.com`;
+const platform = `gpbox`;
+let fullData = data.games.filter(i => selectedGames.includes(i.name));
+let tmpCategories = [...new Set(fullData.map(i => i.category))];
+let categories = data.categories.filter(i => tmpCategories.includes(i.name));
 
-// var basepath = `/copy`;
-// var basepath = ``;
+console.log(`categories: `, categories);
+let ICON_FORMAT = `jpg`;
+let ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
+// let PLAY_TAG = `20220908`;
+
+// let basepath = `/copy`;
+// let basepath = ``;
 
 // 菜单数据
-var menuList = document.querySelector(`.menu-list`);
-var menuItems = categories
+let menuList = document.querySelector(`.menu-list`);
+let menuItems = categories
   .map(
     (cat) =>
       `
@@ -305,7 +312,7 @@ var menuItems = categories
   )
   .join(``);
 
-var homeLink = `
+let homeLink = `
   <li>
     <a
       class="item-link"
@@ -320,38 +327,38 @@ var homeLink = `
 menuList.innerHTML = homeLink + menuItems;
 
 // 首页数据
-var pathname = window.location.pathname;
-var query = window.location.search;
+let pathname = window.location.pathname;
+let query = window.location.search;
 
 console.log(pathname);
 console.log(query);
 
-var pageTitle = document.querySelector(`.page-title`);
-var gameList = document.querySelector(".game-list");
+let pageTitle = document.querySelector(`.page-title`);
+let gameList = document.querySelector(".game-list");
 
 if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   // 首页处理
 
-  var homeContent = document.getElementById(`home-content`);
+  let homeContent = document.getElementById(`home-content`);
 
-  var showPlayed = false;
-  var showRecommended = true;
+  let showPlayed = false;
+  let showRecommended = true;
 
-  var topgames = fullData.filter((item) => recommended.includes(item.name));
+  let topgames = fullData.filter((item) => recommended.includes(item.name));
 
   homeContent.innerHTML = ``;
   //
   function RecommendGames() {
-    var section = document.createElement(`section`);
-    var header = document.createElement(`header`);
-    var h2 = document.createElement(`h2`);
-    var ul = document.createElement(`ul`);
+    let section = document.createElement(`section`);
+    let header = document.createElement(`header`);
+    let h2 = document.createElement(`h2`);
+    let ul = document.createElement(`ul`);
     section.setAttribute(`class`, `top-games`);
     header.setAttribute(`class`, `py-2`);
     ul.setAttribute(`class`, `card-list`);
 
     topgames.forEach((item) => {
-      var li = document.createElement(`li`);
+      let li = document.createElement(`li`);
       li.setAttribute(
         `class`,
         `rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30`
@@ -386,10 +393,10 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
 
   function Banner() {
-    var banner = document.createElement(`div`);
-    var bannerTitle = document.createElement(`div`);
-    var ins = document.createElement(`ins`);
-    var script = document.createElement(`script`);
+    let banner = document.createElement(`div`);
+    let bannerTitle = document.createElement(`div`);
+    let ins = document.createElement(`ins`);
+    let script = document.createElement(`script`);
     banner.setAttribute(`class`, `banner`);
     bannerTitle.innerHTML = `ADVERTISEMENT`;
     bannerTitle.setAttribute(`class`, `text-center text-xs text-gray-400`);
@@ -412,13 +419,13 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     homeContent.append(Banner(), RecommendGames());
   }
 
-  categories.forEach((category, index) => {
-    var section = document.createElement(`section`);
-    var header = document.createElement(`header`);
-    var h2 = document.createElement(`h2`);
-    var a = document.createElement(`a`);
-    var ul = document.createElement(`ul`);
-    var fragment = document.createDocumentFragment();
+  categories.sort((a, b) => a.total < b.total ? 1 : -1).forEach((category, index) => {
+    let section = document.createElement(`section`);
+    let header = document.createElement(`header`);
+    let h2 = document.createElement(`h2`);
+    let a = document.createElement(`a`);
+    let ul = document.createElement(`ul`);
+    let fragment = document.createDocumentFragment();
 
     header.append(h2, a);
     section.append(header, ul);
@@ -428,7 +435,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     ul.setAttribute(`class`, `section-list`);
     a.setAttribute(`class`, `text-gray-400`);
 
-    var games = fullData.filter((item) => item.category == category.name); // 获取分类游戏
+    let games = fullData.filter((item) => item.category == category.name).filter(i => gamesForHome.includes(i.name)); // 获取分类游戏
+    console.log(`games: `, games);
     let total = games.length // 获取该分类游戏数量
 
     h2.innerHTML = `${category.name} Games`;
@@ -443,11 +451,11 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       .slice()
       // .filter((i) => featuredGames.includes(i.name))
       // .sort(() => 0.5 - Math.random()) // 随机
-      .sort((a, b) => new Date(a.time) > new Date(b.time) ? 1 : -1)
-      .sort((a, b) => featuredGames.indexOf(a.name) < featuredGames.indexOf(b.name) ? 1 : -1)
-      .slice(0, index === 1 || index === 3 ? 12 : 6)
+      // .sort((a, b) => new Date(a.time) < new Date(b.time) ? 1 : -1)
+      .sort((a, b) => gamesForHome.indexOf(a.name) > gamesForHome.indexOf(b.name) ? 1 : -1)
+      // .slice(0, index === 1 || index === 3 ? 12 : 6)
       .forEach((game) => {
-        var li = document.createElement(`li`);
+        let li = document.createElement(`li`);
         li.innerHTML = `
         <a href="./game.html?appid=${game.name}&from=home">
           <img
@@ -509,8 +517,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
 
 if (pathname.endsWith(`/category.html`)) {
   // 分类页处理
-  // var queryName = `?name=`;
-  // var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  // let queryName = `?name=`;
+  // let queryId = query.slice(query.indexOf(queryName) + queryName.length);
 
   // console.log(`query: `, query.split("?")[1].split("&"));
 
@@ -568,12 +576,12 @@ if (pathname.endsWith(`/game.html`)) {
   // 详情页处理
   let queryId = resolveUrlParams(query, `appid`);
 
-  var gameInfo = document.querySelector(`.game-information`);
-  var gameDesc = document.querySelector(`.game-description`);
-  var gamePlay = document.querySelector(`.game-play`);
-  var gameRelated = document.querySelector(`.game-related`);
+  let gameInfo = document.querySelector(`.game-information`);
+  let gameDesc = document.querySelector(`.game-description`);
+  let gamePlay = document.querySelector(`.game-play`);
+  let gameRelated = document.querySelector(`.game-related`);
 
-  var currentGame = fullData.find(
+  let currentGame = fullData.find(
     (item) => item.name.toLowerCase() == queryId.toLowerCase()
   );
   // 设置标题
