@@ -22,18 +22,19 @@ var categories = data.categories;
 var menuList = document.querySelector(`.menu-itemlist`);
 var menuItems = categories
   .map(
-    (cat) =>
-      `
-      <li>
-        <a
-          class="block p-3"
-          href="./category.html?name=${cat.toLowerCase()}&from=menu"
-          title="${cat}"
-        >
-          ${cat}
-        </a>
-      </li>
-      `
+    function (cat) {
+      return (`
+        <li>
+          <a
+            class="block p-3"
+            href="./category.html?name=${cat.toLowerCase()}&from=menu"
+            title="${cat}"
+          >
+            ${cat}
+          </a>
+        </li>
+      `)
+    }
   )
   .join(``);
 
@@ -71,31 +72,30 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   function itemList(items, source) {
     return items
       .map(
-        (game) => `
-    <li class="text-center">
-      <a href="./game.html?appid=${game.name}${
-          source ? `&from=${source}` : ``
-        }">
-        <img
-          class="inline-block rounded-lg"
-          src="${game.icon}"
-          alt="${game.title}"
-          width="100"
-          height="100"
-          loading="lazy"
-        />
-        <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
-        ${game.title}
-        </h2>
-      </a>
-    </li>
-    `
+        function (game) { return (`
+          <li class="text-center">
+            <a href="./game.html?appid=${game.name}${
+                source ? `&from=${source}` : ``
+              }">
+              <img
+                class="inline-block rounded-lg"
+                src="${game.icon}"
+                alt="${game.title}"
+                width="100"
+                height="100"
+                loading="lazy"
+              />
+              <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
+              ${game.title}
+              </h2>
+            </a>
+          </li>
+       `)}
       )
       .join(``);
   }
   //
-  var top1games = fullData.filter((item) =>
-    [`BoardTheTrain`, `FireTheGun`].includes(item.name)
+  var top1games = fullData.filter(function (item) { return ([`BoardTheTrain`, `FireTheGun`].includes(item.name))}
   );
   //
   top1.innerHTML = `
@@ -106,37 +106,36 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       ${top1games
         .reverse()
         .map(
-          (item) => `
-      <li class="rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30" style="color: white">
-        <a href="./game.html?appid=${item.name}&from=home">
-          <div class="flex space-x-1">
-            <img
-              class="rounded-lg border-2 border-[#ffffff] w-16 h-16 -mt-8 bg-white"
-              style="border-color: white; background-color: white;"
-              src="${item.icon}"
-              alt="${item.title}"
-              width="100"
-              height="100"
-            />
-            <div class="text-xs drop-shadow"><span class="text-yellow-200 text-sm" style="color: yellow">${item.played}</span> Play</div>
-          </div>
-          <div class="flex justify-between items-center pt-2 drop-shadow">
-            <h2 class="font-bold">${item.title}</h2>
-            <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" class="w-8 h-8">
-            <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clip-rule="evenodd" />
-          </svg>                         
-          </span>
-          </div>
-          
-        </a>
-      </li>`
-        )
-        .join(``)}
+          function (item) { return (`
+          <li class="rounded-lg bg-gradient-to-tr to-blue-500 from-cyan-500 px-2 py-3 text-white shadow-lg shadow-blue-500/30" style="color: white">
+            <a href="./game.html?appid=${item.name}&from=home">
+              <div class="flex space-x-1">
+                <img
+                  class="rounded-lg border-2 border-[#ffffff] w-16 h-16 -mt-8 bg-white"
+                  style="border-color: white; background-color: white;"
+                  src="${item.icon}"
+                  alt="${item.title}"
+                  width="100"
+                  height="100"
+                />
+                <div class="text-xs drop-shadow"><span class="text-yellow-200 text-sm" style="color: yellow">${item.played}</span> Play</div>
+              </div>
+              <div class="flex justify-between items-center pt-2 drop-shadow">
+                <h2 class="font-bold">${item.title}</h2>
+                <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ffffff" class="w-8 h-8">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z" clip-rule="evenodd" />
+              </svg>                         
+              </span>
+              </div>
+              
+            </a>
+          </li>`)}
+        ).join(``)}
     </ul>
   `;
   //
   var top2games = fullData
-    .filter((item) => item.category.toLocaleLowerCase() == "casual")
+    .filter(function (item) {return (item.category.toLocaleLowerCase() === "casual")})
     .slice(0, 6);
   top2.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -149,7 +148,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   `;
   //
   var top3games = fullData
-    .filter((item) => item.category.toLocaleLowerCase() == "puzzle")
+    .filter(function (item) {return (item.category.toLocaleLowerCase() === "puzzle")})
     .slice(0, 6);
   top3.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
@@ -163,13 +162,13 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   //
   var otherGames = fullData
     .filter(
-      (item) =>
+      function (item) { return (
         !["puzzle", "casual", "action"].includes(
           item.category.toLocaleLowerCase()
-        )
+        ))}
     )
     .slice();
-  var otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
+  var otherRandomGames = otherGames.sort(function () {return (0.5 - Math.random())}).slice(0, 6);
   others.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
       <h2>Other Games</h2>
@@ -190,15 +189,15 @@ if (pathname.endsWith(`/category.html`)) {
       ? queryId.slice(0, queryId.indexOf(`&from`))
       : queryId;
   pageTitle.innerHTML = categories.filter(
-    (item) => item.toLocaleLowerCase() == queryId.toLocaleLowerCase()
+    function (item) { return (item.toLocaleLowerCase() === queryId.toLocaleLowerCase())}
   );
 
   document.title = `${pageTitle.innerHTML} Games`;
 
   gameList.innerHTML = fullData
-    .filter((item) => item.category.toLowerCase() == queryId.toLowerCase())
+    .filter(function (item) { return (item.category.toLowerCase() == queryId.toLowerCase())})
     .map(
-      (item) => `
+      function (item) {return (`
     <li class="flex justify-between items-center">
     <div>
       <a class="flex space-x-3" href="./game.html?appid=${
@@ -235,7 +234,7 @@ if (pathname.endsWith(`/category.html`)) {
         >Play</a>
     </div>
   </li>
-  `
+  `)}
     )
     .join(``);
 }
@@ -305,7 +304,7 @@ if (pathname.endsWith(`/game.html`)) {
     .sort(() => 0.5 - Math.random())
     .slice(0, 3)
     .map(
-      (item) => `
+      function (item) { return (`
     <li class="flex justify-between items-center">
       <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=game&t=icon">
         <img
@@ -337,7 +336,7 @@ if (pathname.endsWith(`/game.html`)) {
         >
       </div>
     </li>
-    `
+    `)}
     )
     .join(``);
 }
