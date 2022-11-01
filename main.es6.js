@@ -1,7 +1,7 @@
 // 菜单逻辑
-var menuButton = document.querySelectorAll(".menu-button");
+let menuButton = document.querySelectorAll(".menu-button");
 
-var menu = document.querySelector(".menu");
+let menu = document.querySelector(".menu");
 
 function toggleMenu() {
   menu.classList.toggle(`hidden`);
@@ -10,17 +10,17 @@ function toggleMenu() {
 menuButton.forEach((item) => item.addEventListener("click", toggleMenu));
 
 // 游戏数据
-var platform = `tpal`;
-var domain = `https://cdn.playgames.mobi`;
-var fullData = data.games;
-var categories = data.categories;
+const platform = `tpal`;
+const domain = `https://cdn.playgames.mobi`;
+const fullData = data.games;
+const categories = data.categories;
 
 // let basepath = `/copy`;
 // let basepath = ``;
 
 // 菜单数据
-var menuList = document.querySelector(`.menu-itemlist`);
-var menuItems = categories
+let menuList = document.querySelector(`.menu-itemlist`);
+let menuItems = categories
   .map(
     (cat) =>
       `
@@ -37,7 +37,7 @@ var menuItems = categories
   )
   .join(``);
 
-var homeLink = `
+let homeLink = `
   <li>
     <a
       class="block p-3"
@@ -52,21 +52,21 @@ var homeLink = `
 menuList.innerHTML = homeLink + menuItems;
 
 // 首页数据
-var pathname = window.location.pathname;
-var query = window.location.search;
+let pathname = window.location.pathname;
+let query = window.location.search;
 
 console.log(pathname);
 console.log(query);
 
-var pageTitle = document.querySelector(`.page-title`);
-var gameList = document.querySelector(".game-list");
+let pageTitle = document.querySelector(`.page-title`);
+let gameList = document.querySelector(".game-list");
 
 if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   // 首页处理
-  var top1 = document.querySelector(`.top1`);
-  var top2 = document.querySelector(`.top2`);
-  var top3 = document.querySelector(`.top3`);
-  var others = document.querySelector(`.others`);
+  let top1 = document.querySelector(`.top1`);
+  let top2 = document.querySelector(`.top2`);
+  let top3 = document.querySelector(`.top3`);
+  let others = document.querySelector(`.others`);
 
   function itemList(items, source) {
     return items
@@ -94,7 +94,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       .join(``);
   }
   //
-  var top1games = fullData.filter((item) =>
+  let top1games = fullData.filter((item) =>
     [`BoardTheTrain`, `FireTheGun`].includes(item.name)
   );
   //
@@ -135,7 +135,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     </ul>
   `;
   //
-  var top2games = fullData
+  let top2games = fullData
     .filter((item) => item.category.toLocaleLowerCase() == "casual")
     .slice(0, 6);
   top2.innerHTML = `
@@ -148,7 +148,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     </ul>
   `;
   //
-  var top3games = fullData
+  let top3games = fullData
     .filter((item) => item.category.toLocaleLowerCase() == "puzzle")
     .slice(0, 6);
   top3.innerHTML = `
@@ -161,7 +161,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     </ul>
   `;
   //
-  var otherGames = fullData
+  let otherGames = fullData
     .filter(
       (item) =>
         !["puzzle", "casual", "action"].includes(
@@ -169,7 +169,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         )
     )
     .slice();
-  var otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
+  let otherRandomGames = otherGames.sort(() => 0.5 - Math.random()).slice(0, 6);
   others.innerHTML = `
     <header class="flex mx-4 justify-between py-4">
       <h2>Other Games</h2>
@@ -182,8 +182,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
 
 if (pathname.endsWith(`/category.html`)) {
   // 分类页处理
-  var queryName = `?name=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  let queryName = `?name=`;
+  let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
   queryId =
     queryId.indexOf(`&from`) !== -1
@@ -242,20 +242,20 @@ if (pathname.endsWith(`/category.html`)) {
 
 if (pathname.endsWith(`/game.html`)) {
   // 详情页处理
-  var queryName = `?appid=`;
-  var queryId = query.slice(query.indexOf(queryName) + queryName.length);
+  let queryName = `?appid=`;
+  let queryId = query.slice(query.indexOf(queryName) + queryName.length);
   console.log(`queryId`, queryId);
   queryId =
     queryId.indexOf(`&from`) !== -1
       ? queryId.slice(0, queryId.indexOf(`&from`))
       : queryId;
 
-  var gameInfo = document.querySelector(`.game-information`);
-  var gameDesc = document.querySelector(`.game-description`);
-  var gamePlay = document.querySelector(`.game-play`);
-  var gameRelated = document.querySelector(`.game-related`);
+  let gameInfo = document.querySelector(`.game-information`);
+  let gameDesc = document.querySelector(`.game-description`);
+  let gamePlay = document.querySelector(`.game-play`);
+  let gameRelated = document.querySelector(`.game-related`);
 
-  var currentGame = fullData.find(
+  const currentGame = fullData.find(
     (item) => item.name.toLocaleLowerCase() == queryId.toLocaleLowerCase()
   );
   // 设置标题
