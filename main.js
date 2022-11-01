@@ -125,11 +125,6 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
     banner.append(bannerTitle, ins, script);
     return banner;
   };
-  var itemList = function itemList(items) {
-    return items.map(function (game) {
-      return "\n      <li class=\"text-center\" >\n        <a href=\"./game.html?appid=".concat(game.name, "\">\n          <img\n            class=\"inline-block rounded-lg\"\n            src=\"").concat(ICON_PATH).concat(game.name, ".").concat(ICON_FORMAT, "\"\n            alt=\"").concat(game.title, "\"\n            width=\"100\"\n            height=\"100\"\n            loading=\"lazy\"\n          />\n          <h2 class=\"pt-2 whitespace-nowrap overflow-hidden text-ellipsis\">\n            ").concat(game.title, "\n          </h2>\n        </a>\n      </li >\n      ");
-    }).join("");
-  }; //
   var homeContent = document.getElementById("home-content");
   var showPlayed = false;
   var showRecommended = true;
@@ -166,7 +161,7 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
     h2.innerHTML = "".concat(category.name, " Games");
 
     // console.log(`games`, games);
-    if (total > 6) {
+    if (category.total > 6) {
       a.innerHTML = "More";
       a.setAttribute("href", "./category.html?name=".concat(category.slug, "&from=home"));
     }
@@ -190,6 +185,31 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
       homeContent.append(section);
     }
   });
+
+  // function itemList(items) {
+  //   return items
+  //     .map(
+  //       (game) => `
+  //     <li class="text-center" >
+  //       <a href="./game.html?appid=${game.name}">
+  //         <img
+  //           class="inline-block rounded-lg"
+  //           src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
+  //           alt="${game.title}"
+  //           width="100"
+  //           height="100"
+  //           loading="lazy"
+  //         />
+  //         <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
+  //           ${game.title}
+  //         </h2>
+  //       </a>
+  //     </li >
+  //     `
+  //     )
+  //     .join(``);
+  // }
+  //
 }
 
 // 分类页处理
