@@ -279,7 +279,7 @@ var domain = `https://cdn2.supereasygame.com`;
 var platform = `gpbox`;
 var fullData = data.games.filter(i => selectedGames.includes(i.name));
 var categories = data.categories;
-var ICON_FORMAT = `webp`;
+var ICON_FORMAT = `jpg`;
 var ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
 // var PLAY_TAG = `20220908`;
 
