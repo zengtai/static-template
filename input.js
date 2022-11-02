@@ -8,7 +8,7 @@ const GAME_DOMAIN = `https://cdn2.supereasygame.com`;
 const ICON_FORMAT = `jpg`;
 const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
 
-const DEV_MODE = true; // 广告测试模式，设置 adtest="on"
+const DEV_MODE = false; // 广告测试模式，设置 adtest="on"
 // let PLAY_TAG = `20220908`;
 
 // 选定游戏

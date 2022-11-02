@@ -11,7 +11,7 @@ var CHANNEL = "googleads_main";
 var GAME_DOMAIN = "https://cdn2.supereasygame.com";
 var ICON_FORMAT = "jpg";
 var ICON_PATH = "https://cdn.iwantalipstick.com/gameicon2/".concat(ICON_FORMAT, "/");
-var DEV_MODE = true; // 广告测试模式，设置 adtest="on"
+var DEV_MODE = false; // 广告测试模式，设置 adtest="on"
 // let PLAY_TAG = `20220908`;
 
 // 选定游戏
