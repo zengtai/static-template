@@ -7,7 +7,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-var CHANNEL = "gpbox";
+var CHANNEL = "googleads_main";
 var GAME_DOMAIN = "https://cdn2.supereasygame.com";
 var ICON_FORMAT = "jpg";
 var ICON_PATH = "https://cdn.iwantalipstick.com/gameicon2/".concat(ICON_FORMAT, "/");
@@ -133,8 +133,9 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
   });
   homeContent.innerHTML = "";
   if (showRecommended) {
-    homeContent.append(Banner("5973598328"), TopGames());
+    homeContent.append(Banner("5107946741"), TopGames()); // 广告
   }
+
   categories.sort(function (a, b) {
     return a.total < b.total ? 1 : -1;
   }).forEach(function (category, index) {
@@ -180,7 +181,7 @@ if (pathname.endsWith("/index.html") || pathname.endsWith("/")) {
     });
     ul.appendChild(fragment);
     if (index % 2 == 0) {
-      homeContent.append(section, Banner());
+      homeContent.append(section, Banner(5107946741));
     } else {
       homeContent.append(section);
     }

@@ -222,7 +222,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     ul.appendChild(fragment);
 
     if (index % 2 == 0) {
-      homeContent.append(section, Banner());
+      homeContent.append(section, Banner(5107946741));
     } else {
       homeContent.append(section);
     }
