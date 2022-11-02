@@ -2,7 +2,7 @@
 
 // 游戏图标、链接参数
 
-const CHANNEL = `gpbox`;
+const CHANNEL = `googleads_main`;
 const GAME_DOMAIN = `https://cdn2.supereasygame.com`;
 
 const ICON_FORMAT = `jpg`;
@@ -21,7 +21,7 @@ const SELECTED_GAMES = [
 
 const TOP_GAMES = ["LostInLust", "MyHome"]; // 最顶部位置
 
-const GAMES_FOR_HOME = ["MyHome", "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"]
+const GAMES_FOR_HOME = ["FillTheGlass", "PianoKeys", "TrainIsComing", "SpinTheMaze", "MagicWorm", "HelpTheSheep", "IronAttack", "JumpSmash", "TrafficRun", "HiTaxi", "BoardTheTrain", "LostInLust", "TwistyRoad", "FlyPass", "DressQueen", "CrazyRace", "HungryMonster", "HumanTower", "8BallKing", "ArcheryMaster", "SuperSoccer", "ShootingStar", "BilliardKing", "PowerShooter", "BestShooter", "GunShooter", "ArcheryKing", "AirBrawl", "CrackShot", "KillAllZombies", "BulletMaster3D", "BulletMan", "FireTheGun", "MrBullet", "MergeGuns3D", "ShootingCubes", "MagicBomb", "BombingTime", "MergeAndDefense", "DefenseTower", "TrappedPirate", "FisherMan", "SkyRunning3D", "SkatingMaster", "FeverRacing", "ColorBall3D", "IceEscape", "RoofRunner", "AttackHero", "SausageRun", "BraveArcher", "WildRoll", "RollingAgent", "GlidingCharger", "MyCat", "LittleMiner", "LittleFarm", "WoodIsland", "BoomingPlant", "HarvestStory", "ColorCrash", "BounceShooter", "RainbowSplash", "MatchingCook", "MelodyLink", "MahjongLink", "MagicCarpenter", "NastyBomb", "DashCat", "CandyHit", "PetRun", "ShootSmash", "Hurricane", "FuryEdge", "CrazyGunfight", "CrazyHammer", "MergeKill", "Knife"]
 
 // 游戏数据
 
