@@ -161,7 +161,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
 
   if (showRecommended) {
-    homeContent.append(Banner(`5973598328`), TopGames());
+    homeContent.append(Banner(`5107946741`), TopGames()); // 广告
   }
 
   categories.sort((a, b) => a.total < b.total ? 1 : -1).forEach((category, index) => {
