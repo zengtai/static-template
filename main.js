@@ -18,7 +18,7 @@ _upa.push(['pageview', document.URL || '', window.screen.width || 0, window.scre
     g = d.createElement('script'),
     s = d.getElementsByTagName('script')[0];
   g.async = true;
-  g.src = u + 'analytics_v1_1.js';
+  g.src = u + 'analytics_v1_2.js';
   s.parentNode.insertBefore(g, s);
 })();
 
@@ -272,6 +272,7 @@ if (pathname.endsWith("/game.html")) {
   document.title = "Play ".concat(currentGame.title, " Now");
   gameInfo.setAttribute("upa-tag", "".concat(currentGame.name));
   gameInfo.innerHTML = "\n    <a target=\"_blank\" onclick=\"_upa.push(['click', '".concat(currentGame.name, "', '']); gtag('event', 'game_detail_click', { game : '").concat(currentGame.name, "' }); return gtag_report_conversion('").concat(GAME_DOMAIN, "/newgames/minigame.html?appid=").concat(currentGame.name, "&platform=").concat(CHANNEL, "')\" title=\"Play ").concat(currentGame.title, " Now\" class=\"link-play p-4 flex space-x-3\" href=\"").concat(GAME_DOMAIN, "/newgames/minigame.html?appid=").concat(currentGame.name, "&platform=").concat(CHANNEL, "\">\n      <img\n        class=\"rounded-2xl w-24 h-24\"\n        src=\"").concat(ICON_PATH).concat(currentGame.name, ".").concat(ICON_FORMAT, "\"\n        alt=\"").concat(currentGame.title, "\"\n        width=\"200\"\n        height=\"200\"\n      />\n      <div>\n        <h1 class=\"text-lg\">").concat(currentGame.title, "</h1>\n        <div class=\"flex space-x-2 star my-2\">\n          <div class=\"flex items-center\">\n            <span class=\"clip-star bg-yellow-400\"></span>\n            <span class=\"clip-star bg-yellow-400\"></span>\n            <span class=\"clip-star bg-yellow-400\"></span>\n            <span class=\"clip-star bg-yellow-400\"></span>\n            <span class=\"clip-star bg-gray-300\"></span>\n          </div>\n          <span class=\"text-gray-400\">").concat(currentGame.stars, "</span>\n        </div>\n        <div class=\"space-x-1\">\n          <span class=\"text-orange-400\">").concat(currentGame.played ? currentGame.played : "120.3K", "</span><span class=\"text-gray-400\">Play</span>\n        </div>\n      </div>\n    </a >\n  ");
+  gamePlay.setAttribute("upa-tap", "".concat(currentGame.name));
   gamePlay.innerHTML = "\n    <a\n      title=\"Play ".concat(currentGame.title, " Now\"\n      class=\"detail-play\"\n      target=\"_blank\"\n      onclick=\"_upa.push(['click', '").concat(currentGame.name, "', '']); gtag('event', 'game_detail_click', { game : '").concat(currentGame.name, "' }); return gtag_report_conversion('").concat(GAME_DOMAIN, "/newgames/minigame.html?appid=").concat(currentGame.name, "&platform=").concat(CHANNEL, "');\"\n      href=\"").concat(GAME_DOMAIN, "/newgames/minigame.html?appid=").concat(currentGame.name, "&platform=").concat(CHANNEL, "\">\n      Play\n    </a>\n  ");
   gameDesc.innerHTML = currentGame.description;
   gameRelated.innerHTML = fullData.filter(function (game) {

@@ -10,7 +10,7 @@ _upa.push(['pageview', document.URL || '', window.screen.width || 0, window.scre
 (function () {
   var u = "https://cdn2.supereasygame.com/web/analytics/";
   var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
-  g.async = true; g.src = u + 'analytics_v1_1.js'; s.parentNode.insertBefore(g, s);
+  g.async = true; g.src = u + 'analytics_v1_2.js'; s.parentNode.insertBefore(g, s);
 })();
 
 // 游戏图标、链接参数
