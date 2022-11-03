@@ -122,6 +122,10 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         `class`,
         `top-list-item upa-impression-target`
       );
+      li.setAttribute(
+        `upa-tag`,
+        `${item.name}`,
+      );
       li.innerHTML = `
         <a href="./game.html?appid=${item.name}&from=home" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' })">
           <div class="flex space-x-1">
@@ -214,8 +218,10 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       // .slice(0, index === 1 || index === 3 ? 12 : 6)
       .forEach((game) => {
         let li = document.createElement(`li`);
+        li.setAttribute(`class`, `upa-impression-target`);
+        li.setAttribute(`upa-tag`, `${game.name}`);
         li.innerHTML = `
-          <a href="./game.html?appid=${game.name}&from=home" onclick="_upa.push(['click', '${game.name}', '']); gtag('event', 'game_detail_click', { game : ${game.name} })">
+          <a href="./game.html?appid=${game.name}&from=home" onclick="_upa.push(['click', '${game.name}', '']); gtag('event', 'game_detail_click', { game : '${game.name}' })">
             <img
               class="rounded-lg mx-auto"
               src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
@@ -289,7 +295,7 @@ if (pathname.endsWith(`/category.html`)) {
 
   gameList.innerHTML = fullData.filter((item) => item.category.toLowerCase() == queryId.toLowerCase().replace(/-/g, ` `))
     .map((item, index) => `
-        <li class="game-list-item upa-impression-target">
+        <li class="game-list-item upa-impression-target" upa-tag="${item.name}">
           <div>
             <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=category" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' })">
             <img
@@ -312,7 +318,7 @@ if (pathname.endsWith(`/category.html`)) {
             <a
               class="item-button"
               href="./game.html?appid=${item.name}&from=category"
-              onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : ${item.name} })"
+              onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' })"
               >Play</a>
           </div>
         </li>
@@ -338,8 +344,9 @@ if (pathname.endsWith(`/game.html`)) {
   // 设置标题
   pageTitle.innerHTML = ``;
   document.title = `Play ${currentGame.title} Now`;
+  gameInfo.setAttribute(`upa-tag`, `${currentGame.name}`)
   gameInfo.innerHTML = `
-    <a target="_blank" onclick="_upa.push(['click', '${currentGame.name}', '']); gtag('event', 'game_detail_click', { game : ${currentGame.name} }); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}')" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
+    <a target="_blank" onclick="_upa.push(['click', '${currentGame.name}', '']); gtag('event', 'game_detail_click', { game : '${currentGame.name}' }); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}')" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       <img
         class="rounded-2xl w-24 h-24"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
@@ -370,7 +377,7 @@ if (pathname.endsWith(`/game.html`)) {
       title="Play ${currentGame.title} Now"
       class="detail-play"
       target="_blank"
-      onclick="_upa.push(['click', '${currentGame.name}', '']); gtag('event', 'game_detail_click', { game : ${currentGame.name} }); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}');"
+      onclick="_upa.push(['click', '${currentGame.name}', '']); gtag('event', 'game_detail_click', { game : '${currentGame.name}' }); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}');"
       href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       Play
     </a>
@@ -384,7 +391,7 @@ if (pathname.endsWith(`/game.html`)) {
     .slice(0, 3)
     .map(
       (item) => `
-      <li class="flex justify-between items-center upa-impression-target">
+      <li class="flex justify-between items-center upa-impression-target" upa-tag="${item.name}">
         <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=detail" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' });">
           <img
             class="w-16 rounded-lg"
@@ -410,7 +417,7 @@ if (pathname.endsWith(`/game.html`)) {
           <a
             class="inline-block rounded-full uppercase bg-indigo-500 text-white py-2 w-24"
             href="./game.html?appid=${item.name}&from=detail"
-            onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : ${item.name} });"
+            onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' });"
             >Play</a>
         </div>
       </li>`).join(``);
