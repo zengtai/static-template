@@ -123,7 +123,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
         `top-list-item upa-impression-target`
       );
       li.innerHTML = `
-        <a href="./game.html?appid=${item.name}&from=home" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : ${item.name} })">
+        <a href="./game.html?appid=${item.name}&from=home" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' })">
           <div class="flex space-x-1">
             <img
               class="rounded-lg border-2 border-white w-16 h-16 -mt-8 bg-white"
@@ -291,7 +291,7 @@ if (pathname.endsWith(`/category.html`)) {
     .map((item, index) => `
         <li class="game-list-item upa-impression-target">
           <div>
-            <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=category" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : ${item.name} })">
+            <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=category" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' })">
             <img
               class="item-image"
               src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
@@ -385,7 +385,7 @@ if (pathname.endsWith(`/game.html`)) {
     .map(
       (item) => `
       <li class="flex justify-between items-center upa-impression-target">
-        <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=detail" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : ${item.name} });">
+        <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=detail" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' });">
           <img
             class="w-16 rounded-lg"
             src="${ICON_PATH}${item.name}.${ICON_FORMAT}"
