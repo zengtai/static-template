@@ -325,7 +325,7 @@ if (pathname.endsWith(`/game.html`)) {
   pageTitle.innerHTML = ``;
   document.title = `Play ${currentGame.title} Now`;
   gameInfo.innerHTML = `
-    <a title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
+    <a onclick="return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}');" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       <img
         class="rounded-2xl w-24 h-24"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
@@ -355,6 +355,7 @@ if (pathname.endsWith(`/game.html`)) {
     <a
       title="Play ${currentGame.title} Now"
       class="detail-play"
+      onclick="return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}');"
       href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       Play
     </a>
