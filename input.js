@@ -344,7 +344,7 @@ if (pathname.endsWith(`/game.html`)) {
   // 设置标题
   pageTitle.innerHTML = ``;
   document.title = `Play ${currentGame.title} Now`;
-  gameInfo.setAttribute(`upa-tag`, `${currentGame.name}`)
+  // gameInfo.setAttribute(`upa-tag`, `${currentGame.name}`)
   gameInfo.innerHTML = `
     <a target="_blank" onclick="_upa.push(['click', '${currentGame.name}', '']); gtag('event', 'game_detail_click', { game : '${currentGame.name}' }); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}')" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       <img
@@ -372,7 +372,7 @@ if (pathname.endsWith(`/game.html`)) {
       </div>
     </a >
   `;
-  gamePlay.setAttribute(`upa-tap`, `${currentGame.name}`);
+  // gamePlay.setAttribute(`upa-tap`, `${currentGame.name}`);
   gamePlay.innerHTML = `
     <a
       title="Play ${currentGame.title} Now"
@@ -392,7 +392,7 @@ if (pathname.endsWith(`/game.html`)) {
     .slice(0, 3)
     .map(
       (item) => `
-      <li class="flex justify-between items-center upa-impression-target" upa-tag="${item.name}">
+      <li class="flex justify-between items-center">
         <a class="flex space-x-3" href="./game.html?appid=${item.name}&from=detail" onclick="_upa.push(['click', '${item.name}', '']); gtag('event', 'game_detail_click', { game : '${item.name}' });">
           <img
             class="w-16 rounded-lg"
