@@ -372,6 +372,7 @@ if (pathname.endsWith(`/game.html`)) {
       </div>
     </a >
   `;
+  gamePlay.setAttribute(`upa-tap`, `${currentGame.name}`);
   gamePlay.innerHTML = `
     <a
       title="Play ${currentGame.title} Now"
