@@ -1,4 +1,11 @@
+// (function () {
 "use strict";
+
+// let data = await import("./data");
+
+console.log(`data: `, data);
+
+
 
 // 统计
 
@@ -25,11 +32,7 @@ const DEV_MODE = false; // 广告测试模式，设置 adtest="on"
 // let PLAY_TAG = `20220908`;
 
 // 选定游戏
-
-const SELECTED_GAMES = [
-  "4096", "8BallKing", "AceMan", "AirBrawl", "AirHockey3D", "AmazingRoad", "AntRun", "ArcheryKing", "ArcheryMaster", "AttackHero", "BatterKing", "BattleBurger", "BestShooter", "BigEater", "BigSword", "BilliardKing", "BlockGun3D", "BlockMaster", "BlockMaze", "BoardTheTrain", "BombingTime", "BoomingPlant", "BounceShooter", "BrainMaster", "BraveArcher", "BubblePop", "BuilderRun", "BulletMan", "BulletMaster3D", "CandyHit", "CityExpress", "CleverJump", "CleverRescue", "ColorBall3D", "ColorBead", "ColorCrash", "ColorHammer", "ColorRing", "ColorSplash", "CopyLaser", "CountingMaster", "CrackShot", "CrashTower3D", "CrayonPop", "CrazyDrift", "CrazyHammer", "CrazyKart3D", "CrazyKnife", "CrazyMoto", "CrazyPortal", "CrazyRace", "DartsKing3D", "DashCat", "DeathRun", "DigEscape", "DressQueen", "EasyCharger", "FeedMaster", "FeverRacing", "FierceCity", "FillTheGlass", "FinalBattle", "FingerCannon", "FireTheGun", "FisherMan", "FruitMonster", "FuryEdge", "GlidingCharger", "GoldenBoot", "GoldenGlove", "GunShooter", "HamsterRun", "HappyTetris", "HelpTheSheep", "HiTaxi", "HumanTower", "HungryMonster", "Hurricane", "IdleRestaurantTycoon", "ImEmpire", "IronAttack", "JumpSmash", "KillAllZombies", "Knife", "LetMeIn", "LittleFarm", "LittleMiner", "LostInLust", "MagicCarpenter", "MagicDraw", "MagicJigsaw", "MagicNumber", "MagicPaint", "MagicPainter", "MagicParkour", "MagicWorm", "MahjongLink", "MahjongLink3D", "MatchingCook", "MelodyLink", "MergeAndDefense", "MergeCat", "MergeGuns3D", "MergeKill", "MergeMagicJewellery", "Mining", "MonsterCrash", "MrBullet", "MrRacer", "MyBowling3D", "MyCat", "MyTerritory", "NastyBomb", "OpenFire", "PandaRescue", "PowerShooter", "RollingAgent", "RollingBall", "RoofRunner", "RushAndFire", "SausageRun", "SharkisComing", "ShootingStar", "SnakeHit", "SoccerHero", "SpinTheMaze", "SuperArcher", "SuperCoaster", "SuperSoccer", "TinyWar", "TrafficRun", "TrainIsComing", "WoodIsland", "ZombieSurvival", "CrazyGunfight", "PenguinDash", "PuppyRun", "RainbowSplash", "RelivedLife", "ShootSmash", "SnakeGo", "Super2048", "SuperMiner", "SuperCells", "TheSameWorld", "UltraDrift", "VirusWar", "FlyPass", "FrozenMagic", "HappyBilliards", "HarvestStory", "IceEscape", "MagicBomb", "MyHome", "PetRun", "RocketJump", "SaveThePets", "ShootingCubes", "SkatingMaster", "SkyRunning3D", "SplittingCells", "SuperDefense", "SuperGolf", "SuperThrow", "TwistyRoad", "WildRoll", "DefenseTower", "DragonCrush", "HelpTheZombie", "StickmanVsZombies", "Transform", "Chess3D", "DeathJump", "FairyTalesPuzzle", "HillRacing", "JumpingMonkey", "PianoKeys", "PipePuzzle", "SolitaireClassic", "ZooBlast", "ZumaMarbles", "TrappedPirate", "CrazyJump", "RushingRover", "TableTennisChampionship", "PlantBeatZombies", "AnipopLink"
-];
-
+const SELECTED_GAMES = [];
 // 首页游戏
 
 const TOP_GAMES = ["LostInLust", "MyHome"]; // 最顶部位置
@@ -38,7 +41,11 @@ const GAMES_FOR_HOME = ["FillTheGlass", "PianoKeys", "TrainIsComing", "SpinTheMa
 
 // 游戏数据
 
-let fullData = data.games.filter(i => SELECTED_GAMES.includes(i.name)); // 按筛选的游戏取数据
+let fullData = data.games.filter(i => SELECTED_GAMES.length ? SELECTED_GAMES.includes(i.name) : i); // 按筛选的游戏取数据
+
+let homeData = data.games.filter(i => GAMES_FOR_HOME.includes(i.name)); // 首页数据
+
+console.log(`homeData: `, homeData);
 
 let tmpCategories = [...new Set(fullData.map(i => i.category))];
 let categories = data.categories.filter(i => tmpCategories.includes(i.name)); // 分类数据
@@ -135,6 +142,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
               alt="${item.title}"
               width="100"
               height="100"
+              loading="eager"
             />
             <div class="text-xs drop-shadow"><span class="text-yellow-200 text-sm">${item.played}</span> Play</div>
           </div>
@@ -197,9 +205,8 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     ul.setAttribute(`class`, `section-list`);
     a.setAttribute(`class`, `text-gray-400`);
 
-    let games = fullData.filter((item) => item.category === category.name).filter(i => GAMES_FOR_HOME.includes(i.name)); // 获取分类游戏
+    let games = homeData.filter((item) => item.category === category.name); // 获取分类游戏
     // console.log(`games: `, games);
-    let total = games.length // 获取该分类游戏数量
 
     h2.innerHTML = `${category.name} Games`;
 
@@ -225,10 +232,10 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
             <img
               class="rounded-lg mx-auto"
               src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
-              alt="${game.title}" width="100"
+              alt="${game.title}"
               height="100"
               width="100"
-              ${index > 0 ? `loading="lazy"` : ``}
+              loading=${index > 0 ? "lazy" : "eager"}
             />
             <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
               ${game.title}
@@ -247,30 +254,6 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
     }
   });
 
-  // function itemList(items) {
-  //   return items
-  //     .map(
-  //       (game) => `
-  //     <li class="text-center" >
-  //       <a href="./game.html?appid=${game.name}">
-  //         <img
-  //           class="inline-block rounded-lg"
-  //           src="${ICON_PATH}${game.name}.${ICON_FORMAT}"
-  //           alt="${game.title}"
-  //           width="100"
-  //           height="100"
-  //           loading="lazy"
-  //         />
-  //         <h2 class="pt-2 whitespace-nowrap overflow-hidden text-ellipsis">
-  //           ${game.title}
-  //         </h2>
-  //       </a>
-  //     </li >
-  //     `
-  //     )
-  //     .join(``);
-  // }
-  //
 }
 
 // 分类页处理
@@ -425,3 +408,6 @@ if (pathname.endsWith(`/game.html`)) {
         </div>
       </li>`).join(``);
 }
+
+// })()
+
