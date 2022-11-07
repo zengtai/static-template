@@ -12,7 +12,7 @@ console.log(`data: `, data);
 var _upa = window._upa = window._upa || [];
 var _upa_network = 1; //网络情况开关
 var _upa_impression_target = '.upa-impression-target';
-var u_tag = 'UPTAP10004' //
+var u_tag = 'UPTAP10005' //
 _upa.push(['pageview', document.URL || '', window.screen.width || 0, window.screen.height || 0]);
 (function () {
   var u = "https://cdn2.supereasygame.com/web/analytics/";
@@ -22,7 +22,7 @@ _upa.push(['pageview', document.URL || '', window.screen.width || 0, window.scre
 
 // 游戏图标、链接参数
 
-const CHANNEL = `googleads_main`;
+const CHANNEL = `gpbox2`;
 const GAME_DOMAIN = `https://cdn2.supereasygame.com`;
 
 const ICON_FORMAT = `jpg`;
@@ -116,11 +116,11 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   //
   function TopGames() {
     let section = document.createElement(`section`);
-    let header = document.createElement(`header`);
-    let h2 = document.createElement(`h2`);
+    // let header = document.createElement(`header`);
+    // let h2 = document.createElement(`h2`);
     let ul = document.createElement(`ul`);
     section.setAttribute(`class`, `top-games`);
-    header.setAttribute(`class`, `py-2`);
+    // header.setAttribute(`class`, `py-2`);
     ul.setAttribute(`class`, `card-list`);
 
     topgames.forEach((item) => {
@@ -157,8 +157,9 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
       ul.append(li);
     });
 
-    header.append(h2);
-    section.append(header, ul);
+    // header.append(h2);
+    // section.append(header, ul);
+    section.append(ul);
     return section;
   }
 
@@ -186,7 +187,7 @@ if (pathname.endsWith(`/index.html`) || pathname.endsWith(`/`)) {
   }
 
   if (showRecommended) {
-    homeContent.append(Banner(`5107946741`), TopGames()); // 广告
+    homeContent.append(TopGames(), Banner(`6475533224`)); // 广告
   }
 
   categories.sort((a, b) => a.total < b.total ? 1 : -1).forEach((category, index) => {
@@ -330,7 +331,7 @@ if (pathname.endsWith(`/game.html`)) {
   document.title = `Play ${currentGame.title} Now`;
   // gameInfo.setAttribute(`upa-tag`, `${currentGame.name}`)
   gameInfo.innerHTML = `
-    <a target="_blank" onclick="_upa.push(['click', '${currentGame.name}', '']); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}')" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
+    <a target="_blank" onclick="_upa.push(['click', '${currentGame.name}', '']);" title="Play ${currentGame.title} Now" class="link-play p-4 flex space-x-3" href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       <img
         class="rounded-2xl w-24 h-24"
         src="${ICON_PATH}${currentGame.name}.${ICON_FORMAT}"
@@ -362,7 +363,7 @@ if (pathname.endsWith(`/game.html`)) {
       title="Play ${currentGame.title} Now"
       class="detail-play"
       target="_blank"
-      onclick="_upa.push(['click', '${currentGame.name}', '']); return gtag_report_conversion('${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}');"
+      onclick="_upa.push(['click', '${currentGame.name}', '']);"
       href="${GAME_DOMAIN}/newgames/minigame.html?appid=${currentGame.name}&platform=${CHANNEL}">
       Play
     </a>
