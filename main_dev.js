@@ -23,7 +23,8 @@ _upa.push(['pageview', document.URL || '', window.screen.width || 0, window.scre
 // 游戏图标、链接参数
 
 const CHANNEL = `gpbox2`;
-const GAME_DOMAIN = `https://cdn2.supereasygame.com`;
+const GAME_DOMAIN = ``;
+// const GAME_DOMAIN = `https://cdn2.supereasygame.com`;
 
 const ICON_FORMAT = `jpg`;
 const ICON_PATH = `https://cdn.iwantalipstick.com/gameicon2/${ICON_FORMAT}/`;
